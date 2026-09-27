@@ -1,0 +1,6 @@
+2026-09-26 21:05:10 memwatch[2453349] pid=2453343 start floor=8388608kB interval=2s grace=10s avail=146479208kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench/dsv41_bench.py --label RQ-4096 --run-id 20260926-210510-01-RQ-4096 --result]
+2026-09-26 21:06:11 memwatch[2453349] pid=2453343 ok avail=142416136kB min=142413068kB rss=4609392kB psi=[some avg10=0.00 avg60=0.00 avg300=0.04 total=188723954]
+2026-09-26 21:07:11 memwatch[2453349] pid=2453343 ok avail=142270948kB min=142191140kB rss=4609596kB psi=[some avg10=0.00 avg60=0.00 avg300=0.03 total=188723954]
+2026-09-26 21:08:11 memwatch[2453349] pid=2453343 ok avail=79347328kB min=79347328kB rss=67729604kB psi=[some avg10=2.07 avg60=0.44 avg300=0.11 total=189003158]
+2026-09-26 21:09:11 memwatch[2453349] pid=2453343 ok avail=77950144kB min=77763984kB rss=67756960kB psi=[some avg10=0.00 avg60=0.15 avg300=0.08 total=189003158]
+2026-09-26 21:09:25 memwatch[2453349] pid=2453343 target exited on its own; min MemAvailable seen 77721584kB

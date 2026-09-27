@@ -1,0 +1,28 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): routed experts 52.4 GiB (placement: 11 layers), n-gram tables 0 (every row streams from disk); 110.4 GiB available (memory cgroup /system.slice/run-r9d63daa4eab14c92b30650518bfeab03.scope)
+ -- CPU-offloaded experts (worker): layers.12.ffn
+ -- CPU-offloaded experts (worker): layers.13.ffn
+ -- CPU-offloaded experts (worker): layers.14.ffn
+ -- CPU-offloaded experts (worker): layers.15.ffn
+ -- CPU-offloaded experts (worker): layers.16.ffn
+ -- CPU-offloaded experts (worker): layers.17.ffn
+ -- CPU-offloaded experts (worker): layers.18.ffn
+ -- CPU-offloaded experts (worker): layers.19.ffn
+ -- CPU-offloaded experts (worker): layers.20.ffn
+ -- CPU-offloaded experts (worker): layers.21.ffn
+ -- CPU-offloaded experts (worker): layers.22.ffn
+ -- DSV41 placement [0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- CPU MoE worker started: 11 layers, avx512-vbmi, 12 threads
+-- loaded in 217.9 s; VRAM alloc [60.499, 88.54] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1; stable False
+-- prewarm P=32768: 32.8 s, this process read 3.0 MiB from storage
+-- warmup P=8192 G=16: ttft 9.0641 s, decode 21.065 tok/s
+== gen_P32768_r0: TTFT 32.8147 s, prefill 998.58 tok/s, decode 23.028 tok/s (p50 43.201 ms, p90 44.68 ms, stalls 0), cached 0, read 3.9 MiB (tree 3.9, majflt 0), foreign 0.0, MoE-core foreign 0.0, 16-23 busy 1.5%, tier SSD reads None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.9 GiB
+== raw_P32768: prefill 1029.13 tok/s, TTFT 31.9063 s, decode 17.377 tok/s (p50 57.508 ms, stalls 0), foreign 0.0, MoE-core foreign 0.0
+-- cgroup at the end: {'path': '/system.slice/run-r9d63daa4eab14c92b30650518bfeab03.scope', 'current': 110.845, 'peak': 111.0, 'max': 111.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 8559, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3825.0, '1': 882.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0a/results.jsonl (status ok, provisional False)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

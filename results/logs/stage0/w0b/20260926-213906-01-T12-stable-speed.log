@@ -1,0 +1,25 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-r8d3c6785222b42bbb7f0283a88a97c07.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5825 slots (72.0 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 61.2 GiB pinned (static 0 MiB + tier 4935 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 53.1 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5817 VRAM and 4935 RAM experts, 133.3 GiB read in 18.9 s; 61.2 GiB of RAM page-locked in 3.9 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 10752, "slots": 5825, "spare": 8, "held": 5817, "staging_slots": 768, "pool_gib": 71.995, "staging_gib": 9.492}], "cached": 10752, "hot": 0, "tier_slots": 4935, "ram_gib": 61.221, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 53.114}
+-- loaded in 194.7 s; VRAM alloc [60.499, 88.236] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable True
+-- prewarm P=32768: 34.6 s, this process read 1133.5 MiB from storage
+-- warmup P=8192 G=16: ttft 9.4999 s, decode 8.38 tok/s
+== gen_P32768_r0 tier: decode hit 0.8564 (9064/10584), SSD 0.0 MB/token, H2D 320.2 MB/token, D2H 168.3 MB/token, predicted reads 0; prefill staged 554.8 GB, SSD 0.00 GB, layer plans 224
+== gen_P32768_r0: TTFT 35.8254 s, prefill 914.66 tok/s, decode 9.362 tok/s (p50 107.036 ms, p90 112.172 ms, stalls 0), cached 0, read 6.5 MiB (tree 6.5, majflt 0), foreign 0.051, MoE-core foreign None, 16-23 busy 0.6%, tier SSD reads 0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 75.927 GiB
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-r8d3c6785222b42bbb7f0283a88a97c07.scope', 'current': 75.906, 'peak': 76.004, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 4429.0, '1': 1104.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0b/results.jsonl (status ok, provisional False)

@@ -1,0 +1,11 @@
+2026-09-27 01:12:55 memwatch[2891949] pid=2891945 start floor=8388608kB interval=2s grace=10s avail=145399324kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench2/dsv41_bench.py --label C11-S4 --run-id 20260927-011254-01-C11-S4 --results]
+2026-09-27 01:13:55 memwatch[2891949] pid=2891945 ok avail=142203796kB min=142200324kB rss=4610252kB psi=[some avg10=0.00 avg60=0.02 avg300=0.24 total=245431284]
+2026-09-27 01:14:55 memwatch[2891949] pid=2891945 ok avail=142130284kB min=142128612kB rss=4611048kB psi=[some avg10=0.00 avg60=0.00 avg300=0.18 total=245431284]
+2026-09-27 01:15:55 memwatch[2891949] pid=2891945 ok avail=71052356kB min=71052356kB rss=75323896kB psi=[some avg10=4.65 avg60=3.01 avg300=0.91 total=247796386]
+2026-09-27 01:16:55 memwatch[2891949] pid=2891945 ok avail=69622128kB min=69622128kB rss=75212440kB psi=[some avg10=0.03 avg60=1.12 avg300=0.74 total=248007430]
+2026-09-27 01:17:55 memwatch[2891949] pid=2891945 ok avail=69106768kB min=68918180kB rss=75252212kB psi=[some avg10=0.09 avg60=0.47 avg300=0.62 total=248325150]
+2026-09-27 01:18:56 memwatch[2891949] pid=2891945 ok avail=68756312kB min=68409968kB rss=75279128kB psi=[some avg10=0.19 avg60=0.26 avg300=0.52 total=248625321]
+2026-09-27 01:19:56 memwatch[2891949] pid=2891945 ok avail=68335508kB min=68161364kB rss=75319260kB psi=[some avg10=0.05 avg60=0.13 avg300=0.43 total=248818130]
+2026-09-27 01:20:56 memwatch[2891949] pid=2891945 ok avail=68554748kB min=68161364kB rss=75346004kB psi=[some avg10=0.15 avg60=0.17 avg300=0.38 total=249109932]
+2026-09-27 01:21:56 memwatch[2891949] pid=2891945 ok avail=68481220kB min=68161364kB rss=75386136kB psi=[some avg10=0.08 avg60=0.10 avg300=0.32 total=249346358]
+2026-09-27 01:22:48 memwatch[2891949] pid=2891945 target exited on its own; min MemAvailable seen 68161364kB

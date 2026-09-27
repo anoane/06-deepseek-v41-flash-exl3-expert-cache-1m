@@ -1,0 +1,5 @@
+[window 2026-09-26T19:58:11+00:00] recipe-stage0b: /root/rnd/release/recipe/bench/batches/stage0b-full.batch -> /root/rnd/release/recipe/stage0/w0b
+[idle 2026-09-26T19:59:11+00:00] cores 16-23 busy 4.8% over 60 s; loadavg 8.95 7.58 6.35
+[idle] OK
+[window 2026-09-26T19:59:11+00:00] launching gpu_window
+[window 2026-09-26T21:43:57+00:00] gpu_window rc=0; endpoint inactive

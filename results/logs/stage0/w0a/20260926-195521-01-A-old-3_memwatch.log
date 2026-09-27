@@ -1,0 +1,7 @@
+2026-09-26 19:55:21 memwatch[2316490] pid=2316486 start floor=8388608kB interval=2s grace=10s avail=145927892kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=111G -p MemorySwapMax=0 /root/workspace/ds41-serve-venv/bin/python /root/rnd/release/recipe/bench/dsv41_bench.py --label A-old-3 --run-id 20260926-195521-01-A-old-3]
+2026-09-26 19:56:21 memwatch[2316490] pid=2316486 ok avail=142928840kB min=142860440kB rss=4471924kB psi=[some avg10=0.00 avg60=0.23 avg300=1.09 total=143476920]
+2026-09-26 19:57:21 memwatch[2316490] pid=2316486 ok avail=142941884kB min=142860440kB rss=4480256kB psi=[some avg10=0.00 avg60=0.08 avg300=0.88 total=143476920]
+2026-09-26 19:58:22 memwatch[2316490] pid=2316486 ok avail=121238660kB min=121238660kB rss=20984552kB psi=[some avg10=0.36 avg60=0.14 avg300=0.73 total=143623028]
+2026-09-26 19:59:22 memwatch[2316490] pid=2316486 ok avail=83408024kB min=82242164kB rss=61128380kB psi=[some avg10=2.61 avg60=4.18 avg300=1.84 total=147865609]
+2026-09-26 20:00:22 memwatch[2316490] pid=2316486 ok avail=82955560kB min=82242164kB rss=61361440kB psi=[some avg10=0.08 avg60=1.58 avg300=1.50 total=147977539]
+2026-09-26 20:01:18 memwatch[2316490] pid=2316486 target exited on its own; min MemAvailable seen 82242164kB

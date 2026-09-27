@@ -1,0 +1,68 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-rcd21ca67e44341ebb8ad6476d38b6d5a.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5818 slots (71.9 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 61.3 GiB pinned (static 0 MiB + tier 4942 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 53.0 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5810 VRAM and 4942 RAM experts, 133.3 GiB read in 17.5 s; 61.3 GiB of RAM page-locked in 2.7 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- DSV41 pipelined prefill: eligible, 14 modules on cuda:0, 31 on cuda:1, sub-chunk 4096
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 10752, "slots": 5818, "spare": 8, "held": 5810, "staging_slots": 768, "pool_gib": 71.908, "staging_gib": 9.492}], "cached": 10752, "hot": 0, "tier_slots": 4942, "ram_gib": 61.307, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 52.961}
+-- loaded in 191.7 s; VRAM alloc [60.499, 88.15] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable False
+-- warmup P=8192 G=2: ttft 6.8348 s, decode 12.807 tok/s
+ !! job 1 failed in the generator: OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.61 GiB
+Requested               : 320.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 15.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+Traceback (most recent call last):
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/generator.py", line 534, in iterate
+    job.prefill(results)
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/job.py", line 1399, in prefill
+    self.generator.model.prefill(input_ids = prefill_ids, params = params)
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/deepseek_v41.py", line 754, in prefill
+    return pipeline.prefill_pipelined(self, input_ids, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/dsv41/pipeline.py", line 371, in prefill_pipelined
+    args = stage1(a, b)                      # overlaps the worker's S2 of the previous chunk
+           ^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/dsv41/pipeline.py", line 331, in stage1
+    x = _run(model, plan.st1, x, p)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/dsv41/pipeline.py", line 264, in _run
+    x = module.forward(x, params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_block.py", line 218, in forward
+    x = self._engram(x, params, "engram" in ablate)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_block.py", line 190, in _engram
+    return self.engram.forward(x, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_engram.py", line 791, in forward
+    rstd = torch.rsqrt(h.square().mean(-1) + eps) * torch.rsqrt(key.square().mean(-1) + eps)
+                       ^^^^^^^^^^
+torch.OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.61 GiB
+Requested               : 320.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 15.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+
+== gen_P16384_r0: TTFT None s, prefill None tok/s, decode None tok/s (p50 None ms, p90 None ms, stalls None), cached None, read 5.6 MiB (tree 5.6, majflt 31), foreign 0.112, MoE-core foreign None, 16-23 busy 0.4%, tier SSD reads 0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 91.575 GiB
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-rcd21ca67e44341ebb8ad6476d38b6d5a.scope', 'current': 91.556, 'peak': 91.691, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 4379.0, '1': 640.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0b/results.jsonl (status ok, provisional False)

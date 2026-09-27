@@ -1,0 +1,26 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-r2c0b1bd7d15a46f495ab2a254ea6ee46.scope)
+ -- expert tiers: cuda:0 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 102.0 GiB pinned (static 0 MiB + tier 8222 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=model io=auto: experts on disk only counted at the end of the load, slab 8 slots (102 MiB); 16.3 GiB of RAM left unpinned
+ -- expert tiers: cuda:0 cache 5647 slots (69.8 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 102.0 GiB pinned (static 0 MiB + tier 8222 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=model io=auto: 1499 experts on disk only, slab 102 slots (1.3 GiB); 12.1 GiB of RAM left unpinned
+ -- expert cache cuda:0: cold fill of 5639 VRAM and 8222 RAM experts, 171.9 GiB read in 23.0 s; 103.3 GiB of RAM page-locked in 2.7 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [*=cuda:0 experts=cache; ram experts=102GiB]: cpu embed | cuda:0 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) hc_expand,layers.0-39,hc_head,norm,head | replicas none | top-k cross none | candidates cross none
+-- tier sizing: {"devices": [{"device": "cuda:0", "cached": 15360, "slots": 5647, "spare": 8, "held": 5639, "staging_slots": 768, "pool_gib": 69.795, "staging_gib": 9.492}], "cached": 15360, "hot": 0, "tier_slots": 8222, "ram_gib": 101.997, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 102, "slab_gib": 1.265, "disk_only": 1499, "left_unpinned_gib": 12.052}
+-- loaded in 37.2 s; VRAM alloc [88.468] GiB; numerics deepseek:index; placement *=cuda:0 experts=cache; ram experts=102GiB; stable False
+== quality N=65536: NLL 0.250297730 (1358.35 tok/s scored)
+   anchor 20260926-145856-01-W1-a-quality_quality.npz: 65535/65535 bitwise equal, first diff None, top1 1.0, dNLL +0.000000
+   anchor n64k_serving_deepseek-index.npz: 7877/65535 bitwise equal, first diff 1, top1 0.995392, dNLL -0.000662
+   anchor n64k2_deepseek-index.npz: 7615/65535 bitwise equal, first diff 1, top1 0.995132, dNLL +0.000335
+   anchor 20260926-144016-09-W1-c-quality_quality.npz: 7851/65535 bitwise equal, first diff 1, top1 0.995361, dNLL -0.000139
+-- tier: SSD reads after the load 25853 (344248103388 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-r2c0b1bd7d15a46f495ab2a254ea6ee46.scope', 'current': 113.355, 'peak': 113.376, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3415.0, '1': 65536.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0c/results.jsonl (status ok, provisional False)

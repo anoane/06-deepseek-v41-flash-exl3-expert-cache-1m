@@ -1,0 +1,48 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): routed experts 52.4 GiB (placement: 11 layers), n-gram tables 0 (every row streams from disk); 110.4 GiB available (memory cgroup /system.slice/run-r12257b20f49c499f849cf7c1bf09721e.scope)
+ -- CPU-offloaded experts (worker): layers.12.ffn
+ -- CPU-offloaded experts (worker): layers.13.ffn
+ -- CPU-offloaded experts (worker): layers.14.ffn
+ -- CPU-offloaded experts (worker): layers.15.ffn
+ -- CPU-offloaded experts (worker): layers.16.ffn
+ -- CPU-offloaded experts (worker): layers.17.ffn
+ -- CPU-offloaded experts (worker): layers.18.ffn
+ -- CPU-offloaded experts (worker): layers.19.ffn
+ -- CPU-offloaded experts (worker): layers.20.ffn
+ -- CPU-offloaded experts (worker): layers.21.ffn
+ -- CPU-offloaded experts (worker): layers.22.ffn
+ -- DSV41 placement [0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- CPU MoE worker started: 11 layers, avx512-vbmi, 12 threads
+-- loaded in 215.8 s; VRAM alloc [60.499, 88.54] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1; stable False
+-- prewarm P=32768: 34.0 s, this process read 136.4 MiB from storage
+Traceback (most recent call last):
+  File "/root/rnd/release/recipe/bench/dsv41_bench.py", line 1704, in main
+    mode_speed(ctx, rec, ids, marks)
+  File "/root/rnd/release/recipe/bench/dsv41_bench.py", line 1092, in mode_speed
+    t0, st, tk, eos = run_gen_job(ctx, generator, ids[wo:wo + wn], wg, "warmup", gchunk)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/recipe/bench/dsv41_bench.py", line 833, in run_gen_job
+    res = generator.iterate()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/generator.py", line 540, in iterate
+    self.recurrent_checkpoint()
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/generator.py", line 596, in recurrent_checkpoint
+    job.maybe_stash_recurrent(self.recurrent_cache)
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/job.py", line 1617, in maybe_stash_recurrent
+    cache.put(page.phash, self.recurrent_state)
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/cache/recurrent.py", line 79, in put
+    popped_key, popped = self.popitem(last = False)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'dictionary is empty'
+
+-- cgroup at the end: {'path': '/system.slice/run-r12257b20f49c499f849cf7c1bf09721e.scope', 'current': 110.97, 'peak': 111.0, 'max': 111.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 8510, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3939.0, '1': 1058.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0a/results.jsonl (status error, provisional False)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

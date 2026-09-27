@@ -1,0 +1,6 @@
+2026-09-26 20:56:05 memwatch[2437485] pid=2437481 start floor=8388608kB interval=2s grace=10s avail=145936416kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench/dsv41_bench.py --label T12-stable-dsidx --run-id 20260926-205605-01-T12-sta]
+2026-09-26 20:57:05 memwatch[2437485] pid=2437481 ok avail=142631552kB min=142604472kB rss=4437200kB psi=[some avg10=0.00 avg60=0.00 avg300=0.12 total=188069668]
+2026-09-26 20:58:05 memwatch[2437485] pid=2437481 ok avail=142602688kB min=142595804kB rss=4442688kB psi=[some avg10=0.00 avg60=0.00 avg300=0.09 total=188069668]
+2026-09-26 20:59:05 memwatch[2437485] pid=2437481 ok avail=80159532kB min=80159532kB rss=67689120kB psi=[some avg10=4.08 avg60=0.90 avg300=0.26 total=188665975]
+2026-09-26 21:00:05 memwatch[2437485] pid=2437481 ok avail=78301952kB min=78224556kB rss=67708920kB psi=[some avg10=0.00 avg60=0.32 avg300=0.20 total=188665975]
+2026-09-26 21:00:34 memwatch[2437485] pid=2437481 target exited on its own; min MemAvailable seen 78187904kB

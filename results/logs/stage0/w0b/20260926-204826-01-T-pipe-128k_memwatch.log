@@ -1,0 +1,9 @@
+2026-09-26 20:48:26 memwatch[2422958] pid=2422953 start floor=8388608kB interval=2s grace=10s avail=145882744kB target oom_score_adj=1000 cmd=[/bin/bash /root/rnd/release/all/aux/py_memwatch.sh /root/rnd/release/recipe/bench/dsv41_bench.py --label T-pipe-128k --run-id 20260926-204826-01-T-pipe-128k --results /root/rnd/release/recipe/stage0/w]
+2026-09-26 20:49:26 memwatch[2422958] pid=2422953 ok avail=142361884kB min=142361884kB rss=4614268kB psi=[some avg10=0.00 avg60=0.02 avg300=0.66 total=187913998]
+2026-09-26 20:50:26 memwatch[2422958] pid=2422953 ok avail=142192932kB min=142179268kB rss=4614676kB psi=[some avg10=0.00 avg60=0.00 avg300=0.53 total=187913998]
+2026-09-26 20:51:26 memwatch[2422958] pid=2422953 ok avail=77820732kB min=77820732kB rss=70030388kB psi=[some avg10=0.87 avg60=0.16 avg300=0.46 total=188034342]
+2026-09-26 20:52:27 memwatch[2422958] pid=2422953 ok avail=75506216kB min=75506216kB rss=69984316kB psi=[some avg10=0.00 avg60=0.05 avg300=0.37 total=188034342]
+2026-09-26 20:53:27 memwatch[2422958] pid=2422953 ok avail=75728356kB min=75336388kB rss=70008924kB psi=[some avg10=0.00 avg60=0.03 avg300=0.29 total=188069668]
+2026-09-26 20:54:27 memwatch[2422958] pid=2422953 ok avail=75387948kB min=75218820kB rss=70176408kB psi=[some avg10=0.00 avg60=0.00 avg300=0.23 total=188069668]
+2026-09-26 20:55:27 memwatch[2422958] pid=2422953 ok avail=75003156kB min=75003156kB rss=70206724kB psi=[some avg10=0.00 avg60=0.00 avg300=0.18 total=188069668]
+2026-09-26 20:56:01 memwatch[2422958] pid=2422953 target exited on its own; min MemAvailable seen 74942556kB

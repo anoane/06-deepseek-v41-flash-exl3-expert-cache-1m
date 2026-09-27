@@ -1,0 +1,46 @@
+# Recipe stage 0, window 0a (PLAN.md section 4): OLD vs L0 interleaved, and the decode-gap decomposition.
+# Tree: dsv41-all be33b0e1 (tree = b8105f2d), src-b8105f2d6a05 + native-b8105f2d6a05 (sha256 823174af46fb); OLD = the
+# serving unit's tree /root/workspace/wt-dsv41-crnd (8f9e9c2) + its JIT extension (sha256 4fa4d0749921), serving venv.
+# Every process: aux/py_memwatch.sh (memwatch on its own PID, 8 GiB floor) + a systemd-run --scope cgroup (MEMMAX, swap 0).
+# L0 = 0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 (pinned arena, 4 weight slots, cudaMallocAsync), FP16 1M cache,
+# chunk 4096, max_output_size 32 (speed lines), caps 300/150 W, cores 0-15.
+# minavail = expected RSS (58.7 GiB) + 16 GiB.
+
+# ---- A: OLD vs L0, interleaved ABABAB, 3 each (1 generator repeat + the raw loop per process) ----
+#@ est=7 timeout=720 minavail=75
+A-old-1 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT='split=12;cpu=12-22' EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+#@ est=7 timeout=720 minavail=75
+A-new-1 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+#@ est=7 timeout=720 minavail=75
+A-old-2 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT='split=12;cpu=12-22' EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+#@ est=7 timeout=720 minavail=75
+A-new-2 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+#@ est=7 timeout=720 minavail=75
+A-old-3 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT='split=12;cpu=12-22' EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+#@ est=7 timeout=720 minavail=75
+A-new-3 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+
+# ---- B-np: L0, one process, mirrored 2x2: numerics rounding (deepseek:index / precise) x residual crossing (FP32 / BF16),
+# 8 generator repeats, cell sequence 1 2 3 4 4 3 2 1 ----
+#@ est=12 timeout=1080 minavail=75
+B-np | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 8 --no-raw --vary numerics=deepseek:index/precise/deepseek:index/precise/precise/deepseek:index/precise/deepseek:index --vary xdev_bf16=0/0/1/1/1/1/0/0 --expect-native-sha 823174af46fb
+
+# ---- B-det: L0 + EXL3_MOE_FUSED_DET=0 (the old tree's atomic streamed sums; also makes the GPU fused MoE atomic), 2 repeats ----
+#@ est=7 timeout=720 minavail=75
+B-det | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 EXL3_MOE_FUSED_DET=0 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 2 --no-raw --expect-native-sha 823174af46fb
+
+# ---- D-rc: L0, generator recurrent cache 0 vs 4096 MiB (per-request fixed cost), order 0 4096 4096 0 ----
+#@ est=9 timeout=840 minavail=75
+D-rc | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 4 --no-raw --vary recurrent_cache_mb=0/4096/4096/0 --expect-native-sha 823174af46fb
+
+# ---- C: the 23.4 record's measurement shape (bench_speed.py: one shared Generator, 512 MiB recurrent cache, 24- and
+# 20,000-token decode, 8,192 / 33,600 prefill, model.load(max_chunk_size=4096) only, no cudaMallocAsync); OLD with
+# EXL3_DSV41_XDEV_BF16=0 as the record's tree (0be4ad4 had no BF16 crossing) ----
+#@ est=6 timeout=600 minavail=75
+C-legacy-old | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT='split=12;cpu=12-22' EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 EXL3_DSV41_XDEV_BF16=0 | --modes legacy --chunk 4096 --cache-tokens 1048576 --reserve-mb -1 --gen-tokens 128 --legacy-prefill 8192,33600 --legacy-decode-ctx 24,20000 --expect-native-sha 4fa4d0749921
+#@ est=6 timeout=600 minavail=75
+C-legacy-new | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes legacy --chunk 4096 --cache-tokens 1048576 --reserve-mb -1 --gen-tokens 128 --legacy-prefill 8192,33600 --legacy-decode-ctx 24,20000 --expect-native-sha 823174af46fb
+
+# ---- E-L0: L0 64K quality (64K cache, max_output_size 4096): must be bitwise equal to W1-c (final-native reproducibility) ----
+#@ est=6 timeout=600 minavail=75
+E-L0 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 | --modes quality --quality-tokens 65536 --anchor /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz --anchor /root/rnd/proof/n64k_serving_deepseek-index.npz --anchor /root/rnd/numerics/n64k2_deepseek-index.npz --expect-native-sha 823174af46fb

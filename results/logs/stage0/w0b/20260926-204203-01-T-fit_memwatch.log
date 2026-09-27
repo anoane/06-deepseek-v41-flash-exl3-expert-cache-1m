@@ -1,0 +1,8 @@
+2026-09-26 20:42:03 memwatch[2411456] pid=2411452 start floor=8388608kB interval=2s grace=10s avail=145241080kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench/dsv41_bench.py --label T-fit --run-id 20260926-204203-01-T-fit --results /r]
+2026-09-26 20:43:03 memwatch[2411456] pid=2411452 ok avail=142367992kB min=142343008kB rss=4609492kB psi=[some avg10=0.00 avg60=0.83 avg300=1.66 total=186123991]
+2026-09-26 20:44:04 memwatch[2411456] pid=2411452 ok avail=142308864kB min=142276412kB rss=4610776kB psi=[some avg10=0.00 avg60=0.30 avg300=1.34 total=186123991]
+2026-09-26 20:45:04 memwatch[2411456] pid=2411452 ok avail=77867668kB min=77867668kB rss=70026764kB psi=[some avg10=11.59 avg60=2.80 avg300=1.67 total=187892982]
+2026-09-26 20:46:04 memwatch[2411456] pid=2411452 ok avail=75652064kB min=75652064kB rss=70246356kB psi=[some avg10=0.02 avg60=1.04 avg300=1.36 total=187913996]
+2026-09-26 20:47:04 memwatch[2411456] pid=2411452 ok avail=75302804kB min=75302804kB rss=70247192kB psi=[some avg10=0.00 avg60=0.37 avg300=1.10 total=187913996]
+2026-09-26 20:48:04 memwatch[2411456] pid=2411452 ok avail=75289564kB min=75174112kB rss=70226712kB psi=[some avg10=0.00 avg60=0.13 avg300=0.89 total=187913996]
+2026-09-26 20:48:20 memwatch[2411456] pid=2411452 target exited on its own; min MemAvailable seen 75174112kB

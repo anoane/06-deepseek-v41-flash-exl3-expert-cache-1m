@@ -1,0 +1,40 @@
+run stage1/w1/20260927-012252-01-Q-C10_quality.npz
+  vs stage0/w0b/20260926-210510-01-RQ-4096_quality.npz: 9510/65535 bitwise, top-1 0.9976, dNLL +0.000070 [-0.000261, +0.000332], confident flips 33
+  vs stage0/w0c/20260926-223752-01-A1M-Q_quality.npz: 7773/65535 bitwise, top-1 0.9952, dNLL +0.000535 [-0.000085, +0.000982], confident flips 81
+  vs stage0/w0b/20260926-210928-01-RQ-2048_quality.npz: 7675/65535 bitwise, top-1 0.9952, dNLL +0.000463 [-0.000230, +0.001013], confident flips 78
+  vs stage0/w0b/20260926-211405-01-RQ-2047_quality.npz: 7670/65535 bitwise, top-1 0.9949, dNLL +0.000681 [+0.000039, +0.001220] (CI excludes 0), confident flips 97
+  vs /root/rnd/numerics/n64k2_deepseek-index.npz: 7811/65535 bitwise, top-1 0.9950, dNLL +0.000870 [+0.000221, +0.001379] (CI excludes 0), confident flips 76
+  vs /root/rnd/proof/n64k_serving_deepseek-index.npz: 7836/65535 bitwise, top-1 0.9954, dNLL -0.000127 [-0.000730, +0.000309], confident flips 64
+  vs /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz: 9439/65535 bitwise, top-1 0.9977, dNLL +0.000396 [+0.000008, +0.000706] (CI excludes 0), confident flips 32
+run stage1/w1/20260927-012643-01-Q-C11_quality.npz
+  vs stage0/w0b/20260926-210510-01-RQ-4096_quality.npz: 9573/65535 bitwise, top-1 0.9980, dNLL -0.000392 [-0.000633, -0.000017] (CI excludes 0), confident flips 24
+  vs stage0/w0c/20260926-223752-01-A1M-Q_quality.npz: 7863/65535 bitwise, top-1 0.9956, dNLL +0.000073 [-0.000434, +0.000603], confident flips 81
+  vs stage0/w0b/20260926-210928-01-RQ-2048_quality.npz: 7615/65535 bitwise, top-1 0.9950, dNLL +0.000001 [-0.000574, +0.000649], confident flips 88
+  vs stage0/w0b/20260926-211405-01-RQ-2047_quality.npz: 7598/65535 bitwise, top-1 0.9949, dNLL +0.000218 [-0.000316, +0.000833], confident flips 98
+  vs /root/rnd/numerics/n64k2_deepseek-index.npz: 7779/65535 bitwise, top-1 0.9954, dNLL +0.000408 [-0.000168, +0.001015], confident flips 69
+  vs /root/rnd/proof/n64k_serving_deepseek-index.npz: 7941/65535 bitwise, top-1 0.9959, dNLL -0.000589 [-0.001145, -0.000037] (CI excludes 0), confident flips 62
+  vs /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz: 9631/65535 bitwise, top-1 0.9980, dNLL -0.000066 [-0.000328, +0.000287], confident flips 29
+run stage1/w1/20260927-013045-01-Q-C8_quality.npz
+  vs stage0/w0b/20260926-210510-01-RQ-4096_quality.npz: 8813/65535 bitwise, top-1 0.9976, dNLL -0.000786 [-0.001162, -0.000340] (CI excludes 0), confident flips 27
+  vs stage0/w0c/20260926-223752-01-A1M-Q_quality.npz: 7792/65535 bitwise, top-1 0.9955, dNLL -0.000321 [-0.000801, +0.000131], confident flips 65
+  vs stage0/w0b/20260926-210928-01-RQ-2048_quality.npz: 7592/65535 bitwise, top-1 0.9950, dNLL -0.000393 [-0.001026, +0.000267], confident flips 76
+  vs stage0/w0b/20260926-211405-01-RQ-2047_quality.npz: 7554/65535 bitwise, top-1 0.9950, dNLL -0.000176 [-0.000760, +0.000451], confident flips 95
+  vs /root/rnd/numerics/n64k2_deepseek-index.npz: 7752/65535 bitwise, top-1 0.9950, dNLL +0.000014 [-0.000537, +0.000566], confident flips 70
+  vs /root/rnd/proof/n64k_serving_deepseek-index.npz: 7814/65535 bitwise, top-1 0.9957, dNLL -0.000983 [-0.001477, -0.000486] (CI excludes 0), confident flips 62
+  vs /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz: 8820/65535 bitwise, top-1 0.9975, dNLL -0.000460 [-0.000845, -0.000021] (CI excludes 0), confident flips 37
+run stage0/w0b/20260926-210510-01-RQ-4096_quality.npz
+  vs stage0/w0b/20260926-210510-01-RQ-4096_quality.npz: 65535/65535 bitwise, top-1 1.0000, dNLL +0.000000 [+0.000000, +0.000000], confident flips 0
+  vs stage0/w0c/20260926-223752-01-A1M-Q_quality.npz: 7853/65535 bitwise, top-1 0.9953, dNLL +0.000465 [-0.000096, +0.000928], confident flips 74
+  vs stage0/w0b/20260926-210928-01-RQ-2048_quality.npz: 7721/65535 bitwise, top-1 0.9954, dNLL +0.000393 [-0.000224, +0.000928], confident flips 74
+  vs stage0/w0b/20260926-211405-01-RQ-2047_quality.npz: 7736/65535 bitwise, top-1 0.9951, dNLL +0.000611 [+0.000049, +0.001131] (CI excludes 0), confident flips 84
+  vs /root/rnd/numerics/n64k2_deepseek-index.npz: 7883/65535 bitwise, top-1 0.9958, dNLL +0.000800 [+0.000233, +0.001298] (CI excludes 0), confident flips 56
+  vs /root/rnd/proof/n64k_serving_deepseek-index.npz: 7845/65535 bitwise, top-1 0.9958, dNLL -0.000197 [-0.000716, +0.000245], confident flips 59
+  vs /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz: 10016/65535 bitwise, top-1 0.9983, dNLL +0.000326 [+0.000017, +0.000632] (CI excludes 0), confident flips 19
+run stage0/w0c/20260926-223752-01-A1M-Q_quality.npz
+  vs stage0/w0b/20260926-210510-01-RQ-4096_quality.npz: 7853/65535 bitwise, top-1 0.9953, dNLL -0.000465 [-0.000928, +0.000096], confident flips 79
+  vs stage0/w0c/20260926-223752-01-A1M-Q_quality.npz: 65535/65535 bitwise, top-1 1.0000, dNLL +0.000000 [+0.000000, +0.000000], confident flips 0
+  vs stage0/w0b/20260926-210928-01-RQ-2048_quality.npz: 7543/65535 bitwise, top-1 0.9949, dNLL -0.000072 [-0.000728, +0.000670], confident flips 88
+  vs stage0/w0b/20260926-211405-01-RQ-2047_quality.npz: 7562/65535 bitwise, top-1 0.9951, dNLL +0.000146 [-0.000447, +0.000832], confident flips 87
+  vs /root/rnd/numerics/n64k2_deepseek-index.npz: 7615/65535 bitwise, top-1 0.9951, dNLL +0.000335 [-0.000227, +0.000880], confident flips 84
+  vs /root/rnd/proof/n64k_serving_deepseek-index.npz: 7877/65535 bitwise, top-1 0.9954, dNLL -0.000662 [-0.001252, -0.000053] (CI excludes 0), confident flips 68
+  vs /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz: 7851/65535 bitwise, top-1 0.9954, dNLL -0.000139 [-0.000615, +0.000434], confident flips 72

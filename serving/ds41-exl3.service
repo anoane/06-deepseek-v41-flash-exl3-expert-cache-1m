@@ -1,0 +1,34 @@
+[Unit]
+Description=DeepSeek-V4.1-Flash (exllamav3 V4.1 port, exl3 3.0bpw, 1M context) via TabbyAPI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/rnd/tabby-fresh
+# two-card placement: CMP 170HX first (layers 0-11 resident), RTX PRO 6000 layers 12-39, CPU experts 12-22
+Environment=CUDA_DEVICE_ORDER=PCI_BUS_ID
+Environment=CUDA_VISIBLE_DEVICES=1,0
+Environment=EXL3_DSV41_PLACEMENT=split=12;cpu=12-22
+Environment=EXL3_MOE_CPU_OFFLOAD=11
+Environment=EXL3_MOE_PINNED_ARENA=1
+Environment=EXL3_MOE_CPU_WSLOTS=4
+Environment=CUDA_HOME=/usr/local/cuda
+Environment=PATH=/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext:/root/rnd/tabby-fresh
+Environment=HF_HUB_OFFLINE=1
+Environment=TOKENIZERS_PARALLELISM=false
+# thermal policy: capped power while serving, restored after
+ExecStartPre=/usr/bin/nvidia-smi -i 0 -pl 300
+ExecStartPre=/usr/bin/nvidia-smi -i 1 -pl 150
+ExecStart=/root/workspace/ds41-serve-venv/bin/python /root/rnd/tabby-fresh/main.py --config /root/serve/ds41-exl3.yml
+ExecStopPost=/usr/bin/nvidia-smi -i 0 -pl 400
+ExecStopPost=/usr/bin/nvidia-smi -i 1 -pl 200
+Restart=on-failure
+RestartSec=30
+TimeoutStartSec=1200
+TimeoutStopSec=120
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

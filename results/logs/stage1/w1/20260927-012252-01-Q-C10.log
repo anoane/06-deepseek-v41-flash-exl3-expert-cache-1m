@@ -1,0 +1,29 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-r3848f59ca00e4aa0b9e55c0ba451bb82.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5972 slots (73.8 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 68.9 GiB pinned (static 0 MiB + tier 5556 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 45.4 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5964 VRAM and 5556 RAM experts, 142.9 GiB read in 19.1 s; 68.9 GiB of RAM page-locked in 2.6 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-9=cuda:0; 10-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-9 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.10-39,hc_head,norm,head | replicas 10<-8 | top-k cross 8->10-13 | candidates cross none
+ -- DSV41 pipelined prefill: eligible, 12 modules on cuda:0, 33 on cuda:1, sub-chunk 4096
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 11520, "slots": 5972, "spare": 8, "held": 5964, "staging_slots": 768, "pool_gib": 73.812, "staging_gib": 9.492}], "cached": 11520, "hot": 0, "tier_slots": 5556, "ram_gib": 68.924, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 45.369}
+-- loaded in 167.7 s; VRAM alloc [49.462, 88.066] GiB; numerics deepseek:index; placement 0-9=cuda:0; 10-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable False
+== quality N=65536: NLL 0.250832759 (1162.11 tok/s scored)
+   anchor n64k_serving_deepseek-index.npz: 7836/65535 bitwise equal, first diff 1, top1 0.995407, dNLL -0.000127
+   anchor n64k2_deepseek-index.npz: 7811/65535 bitwise equal, first diff 1, top1 0.995026, dNLL +0.000870
+   anchor 20260926-144016-09-W1-c-quality_quality.npz: 9439/65535 bitwise equal, first diff 1, top1 0.997665, dNLL +0.000396
+   anchor 20260926-145856-01-W1-a-quality_quality.npz: 7773/65535 bitwise equal, first diff 1, top1 0.995178, dNLL +0.000535
+   anchor 20260926-210510-01-RQ-4096_quality.npz: 9510/65535 bitwise equal, first diff 1, top1 0.997635, dNLL +0.000070
+   anchor 20260926-223752-01-A1M-Q_quality.npz: 7773/65535 bitwise equal, first diff 1, top1 0.995178, dNLL +0.000535
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-r3848f59ca00e4aa0b9e55c0ba451bb82.scope', 'current': 109.676, 'peak': 109.723, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3805.0, '1': 12290.0}
+-- result line appended to /root/rnd/release/recipe/stage1/w1/results.jsonl (status ok, provisional False)

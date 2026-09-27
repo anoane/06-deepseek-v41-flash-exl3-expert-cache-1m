@@ -1,0 +1,12 @@
+2026-09-27 05:10:42 memwatch[3310989] pid=3310985 start floor=8388608kB interval=2s grace=10s avail=145815608kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench3/dsv41_bench.py --label C12-ES --run-id 20260927-051042-01-C12-ES --results]
+2026-09-27 05:11:42 memwatch[3310989] pid=3310985 ok avail=142268176kB min=142226424kB rss=4597092kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276045621]
+2026-09-27 05:12:42 memwatch[3310989] pid=3310985 ok avail=142162736kB min=142162736kB rss=4601876kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276045621]
+2026-09-27 05:13:42 memwatch[3310989] pid=3310985 ok avail=76709612kB min=76684704kB rss=69966424kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276045621]
+2026-09-27 05:14:42 memwatch[3310989] pid=3310985 ok avail=75443012kB min=75330008kB rss=70096896kB psi=[some avg10=0.01 avg60=0.28 avg300=0.11 total=276469044]
+2026-09-27 05:15:43 memwatch[3310989] pid=3310985 ok avail=75268144kB min=75148496kB rss=70129636kB psi=[some avg10=0.00 avg60=0.10 avg300=0.08 total=276469044]
+2026-09-27 05:16:43 memwatch[3310989] pid=3310985 ok avail=75253616kB min=75148496kB rss=70110048kB psi=[some avg10=0.00 avg60=0.03 avg300=0.06 total=276469044]
+2026-09-27 05:17:43 memwatch[3310989] pid=3310985 ok avail=75695168kB min=74881056kB rss=70102704kB psi=[some avg10=1.41 avg60=0.27 avg300=0.10 total=276644933]
+2026-09-27 05:18:43 memwatch[3310989] pid=3310985 ok avail=75078492kB min=74881056kB rss=70160276kB psi=[some avg10=0.00 avg60=0.09 avg300=0.07 total=276644933]
+2026-09-27 05:19:43 memwatch[3310989] pid=3310985 ok avail=75112032kB min=74881056kB rss=70197972kB psi=[some avg10=0.00 avg60=0.02 avg300=0.05 total=276644933]
+2026-09-27 05:20:43 memwatch[3310989] pid=3310985 ok avail=74988352kB min=74878508kB rss=70306856kB psi=[some avg10=0.00 avg60=0.00 avg300=0.04 total=276644933]
+2026-09-27 05:21:24 memwatch[3310989] pid=3310985 target exited on its own; min MemAvailable seen 74878508kB

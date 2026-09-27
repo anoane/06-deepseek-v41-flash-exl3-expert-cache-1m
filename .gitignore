@@ -1,0 +1,25 @@
+# never commit credentials or captured state
+*.key
+*.pem
+id_*
+*_rsa
+*_ed25519
+*.conf.local
+.env
+.env.*
+credentials/
+apikey*
+api_tokens*
+
+# model weights and captured tensors
+*.safetensors
+*.gguf
+*.bin
+*.npz
+*.npy
+*.rom
+
+# scratch
+__pycache__/
+*.pyc
+.DS_Store

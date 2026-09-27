@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/root/rnd/release/recipe/bench/dsv41_bench.py", line 1648, in main
+    model.load(**load_kw)
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/model/model.py", line 745, in load
+    for _ in f: pass
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/deepseek_v41.py", line 853, in load_gen
+    yield from super().load_gen(*args, **kwargs)
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/model/model.py", line 669, in load_gen
+    yield from self._load_autosplit(
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/model/model_ls.py", line 327, in _load_autosplit
+    raise RuntimeError(
+RuntimeError: placement: layers.12 does not fit on cuda:0 with the modules already placed there (Allocation on device 0 would exceed allowed memory. (out of memory)); move layers to another device, give their experts experts=stream / cpu / split, or raise that device's budget (placement '0-13=cuda:0; 14-39=cuda:1 experts=cache; ram experts=all; disk experts=off')
+
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-r8380fb43496f4be1bff3d6dbc2c69c1c.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+-- cgroup at the end: {'path': '/system.slice/run-r8380fb43496f4be1bff3d6dbc2c69c1c.scope', 'current': 10.437, 'peak': 10.457, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 97883.0, '1': 652.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0b/results.jsonl (status error, provisional False)

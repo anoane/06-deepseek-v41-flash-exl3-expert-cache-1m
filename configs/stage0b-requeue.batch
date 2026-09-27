@@ -1,0 +1,11 @@
+# appended 2026-09-26 by the recipe stage-0 run: diagnostics for jobs the generator reaped with the exception unrecorded
+# (T-fit: both pipelined 32K jobs, 3.6 s, no tokens; 0a B-det: both 32K jobs, 12 s, no tokens). These two lines run the
+# bench2 harness (MEMWATCH_PY=bench2/py_mem_b2.sh swaps the script), which records the reaped job's exception.
+#@ est=6 timeout=900 minavail=88
+DIAG-C12-pipe | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench2/py_mem_b2.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=119G EXL3_PLACEMENT='0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off' EXL3_DSV41_PIPELINE=1 EXL3_DSV41_PIPELINE_CHUNK=4096 | --modes speed --prompt-tokens 16384 --gen-tokens 16 --repeats 1 --no-raw --no-prewarm --warmup-gen 2 --chunk 4096 --gen-chunk 16384 --expect-native-sha 823174af46fb
+#@ est=6 timeout=900 minavail=75
+DIAG-L0-det0 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench2/py_mem_b2.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT='0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1' EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 EXL3_MOE_FUSED_DET=0 | --modes speed --prompt-tokens 32768 --gen-tokens 16 --repeats 1 --no-raw --no-prewarm --warmup-gen 2 --expect-native-sha 823174af46fb
+# appended by the recipe stage-0 run: the same pipelined C12 diagnostic with 2048-row sub-chunks (half the per-stage
+# activations on the CMP, which has ~0.6-1 GiB free at 1M), bench2 harness
+#@ est=6 timeout=900 minavail=88
+DIAG-C12-pipe2048 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench2/py_mem_b2.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=119G EXL3_PLACEMENT='0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off' EXL3_DSV41_PIPELINE=1 EXL3_DSV41_PIPELINE_CHUNK=2048 | --modes speed --prompt-tokens 16384 --gen-tokens 16 --repeats 1 --no-raw --no-prewarm --warmup-gen 2 --chunk 4096 --gen-chunk 16384 --expect-native-sha 823174af46fb

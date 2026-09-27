@@ -1,0 +1,41 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): routed experts 52.4 GiB (placement: 11 layers), n-gram tables 0 (every row streams from disk); 110.4 GiB available (memory cgroup /system.slice/run-r8888f20d379b408ca629f86d37e08f8d.scope)
+ -- CPU-offloaded experts (worker): layers.12.ffn
+ -- CPU-offloaded experts (worker): layers.13.ffn
+ -- CPU-offloaded experts (worker): layers.14.ffn
+ -- CPU-offloaded experts (worker): layers.15.ffn
+ -- CPU-offloaded experts (worker): layers.16.ffn
+ -- CPU-offloaded experts (worker): layers.17.ffn
+ -- CPU-offloaded experts (worker): layers.18.ffn
+ -- CPU-offloaded experts (worker): layers.19.ffn
+ -- CPU-offloaded experts (worker): layers.20.ffn
+ -- CPU-offloaded experts (worker): layers.21.ffn
+ -- CPU-offloaded experts (worker): layers.22.ffn
+ -- DSV41 placement [0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- CPU MoE worker started: 11 layers, avx512-vbmi, 12 threads
+-- engram page drop: 188.8 GiB advised, resident 15.10 -> 0.00 GiB
+-- loaded in 216.6 s; VRAM alloc [60.499, 88.54] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1; stable False
+== S0 P=2048 cached=0 G=512: TTFT 6.0039 s, prefill 341.11 (delta 341.11) tok/s, decode 22.898 tok/s (p50 43.559 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.993 GiB
+== S1-32K@100000 P=32768 cached=0 G=256: TTFT 34.3888 s, prefill 952.87 (delta 952.87) tok/s, decode 22.938 tok/s (p50 43.387 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.96 GiB
+== S2-32K@100000 P=32768 cached=0 G=256: TTFT 33.063 s, prefill 991.08 (delta 991.08) tok/s, decode 23.158 tok/s (p50 43.091 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.795 GiB
+== S1-32K@140000 P=32768 cached=0 G=256: TTFT 33.4428 s, prefill 979.82 (delta 979.82) tok/s, decode 22.921 tok/s (p50 43.556 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.968 GiB
+== S2-32K@140000 P=32768 cached=0 G=256: TTFT 33.0644 s, prefill 991.04 (delta 991.04) tok/s, decode 23.268 tok/s (p50 43.006 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.828 GiB
+== S1-128K@200000 P=131072 cached=0 G=256: TTFT 133.0829 s, prefill 984.89 (delta 984.89) tok/s, decode 22.777 tok/s (p50 43.736 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.974 GiB
+== S3_t1 P=16384 cached=0 G=256: TTFT 17.5016 s, prefill 936.14 (delta 936.14) tok/s, decode 23.051 tok/s (p50 43.351 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.955 GiB
+== S3_t2 P=17664 cached=16384 G=256: TTFT 3.1185 s, prefill 5664.35 (delta 410.45) tok/s, decode 23.259 tok/s (p50 42.976 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.979 GiB
+== S3_t3 P=22016 cached=17408 G=256: TTFT 6.4878 s, prefill 3393.42 (delta 710.26) tok/s, decode 23.067 tok/s (p50 43.318 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.983 GiB
+== S3_t4 P=22784 cached=21760 G=256: TTFT 3.2347 s, prefill 7043.61 (delta 316.57) tok/s, decode 23.084 tok/s (p50 43.464 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.908 GiB
+== S3_t5 P=31232 cached=22528 G=256: TTFT 9.9905 s, prefill 3126.18 (delta 871.23) tok/s, decode 23.051 tok/s (p50 43.447 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.981 GiB
+== S3_t6 P=33536 cached=30976 G=256: TTFT 3.9942 s, prefill 8396.14 (delta 640.93) tok/s, decode 23.151 tok/s (p50 43.202 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.98 GiB
+== S5_t7 P=37888 cached=33280 G=512: TTFT 6.71 s, prefill 5646.5 (delta 686.74) tok/s, decode 23.119 tok/s (p50 43.209 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.981 GiB
+== S5_t8 P=40448 cached=37632 G=256: TTFT 4.1188 s, prefill 9820.44 (delta 683.69) tok/s, decode 23.187 tok/s (p50 43.183 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.94 GiB
+== S5b P=8192 cached=0 G=256: TTFT 9.3495 s, prefill 876.2 (delta 876.2) tok/s, decode 23.085 tok/s (p50 43.003 ms, stalls 0), hit None, miss/token None, H2D None MB/token, staged None GB, SSD None/None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.794 GiB
+== devtime: {"tokens": 32, "wall_ms_per_token": 42.5104, "wall_ms_per_token_p50": 42.5645, "devices": {"0": {"module_ms_per_token": 13.6978, "blocks": 12, "layer_ms_mean": 1.1406, "layer_ms_p50": 0.9964, "layer_ms_p90": 1.5839}, "1": {"module_ms_per_token": 28.1091, "blocks": 28, "layer_ms_mean": 0.9916, "layer_ms_p50": 0.4675, "layer_ms_p90": 2.0579}}, "residual_ms_per_token": 0.7035, "lead_tokens": 16, "unhooked_wall_ms_per_token": 41.0957, "prompt_tokens": 32768, "modules_hooked": 45}
+-- cgroup at the end: {'path': '/system.slice/run-r8888f20d379b408ca629f86d37e08f8d.scope', 'current': 110.763, 'peak': 111.0, 'max': 111.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 9325, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3761.0, '1': 818.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0c/results.jsonl (status ok, provisional False)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

@@ -1,0 +1,25 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-re786eb4e66454e2aa6ef6bfe9725ed75.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5818 slots (71.9 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 61.3 GiB pinned (static 0 MiB + tier 4942 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 53.0 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5810 VRAM and 4942 RAM experts, 133.3 GiB read in 18.8 s; 61.3 GiB of RAM page-locked in 3.4 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- DSV41 pipelined prefill: eligible, 14 modules on cuda:0, 31 on cuda:1, sub-chunk 2048
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 10752, "slots": 5818, "spare": 8, "held": 5810, "staging_slots": 768, "pool_gib": 71.908, "staging_gib": 9.492}], "cached": 10752, "hot": 0, "tier_slots": 4942, "ram_gib": 61.307, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 52.962}
+-- loaded in 195.2 s; VRAM alloc [60.499, 88.15] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable False
+-- warmup P=8192 G=2: ttft 8.6469 s, decode 13.025 tok/s
+== gen_P16384_r0 tier: decode hit 0.7052 (1777/2520), SSD 0.0 MB/token, H2D 657.4 MB/token, D2H 342.4 MB/token, predicted reads 0; prefill staged 552.7 GB, SSD 0.00 GB, layer plans 224
+== gen_P16384_r0: TTFT 14.9624 s, prefill 1095.01 tok/s, decode 21.676 tok/s (p50 44.413 ms, p90 49.78 ms, stalls 0), cached 0, read 560.6 MiB (tree 560.6, majflt 0), foreign 0.057, MoE-core foreign None, 16-23 busy 1.1%, tier SSD reads 0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 105.599 GiB
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-re786eb4e66454e2aa6ef6bfe9725ed75.scope', 'current': 105.578, 'peak': 105.601, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 5083.0, '1': 1104.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0b/results.jsonl (status ok, provisional False)

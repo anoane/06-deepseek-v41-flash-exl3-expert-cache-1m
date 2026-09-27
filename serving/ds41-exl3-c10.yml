@@ -1,0 +1,35 @@
+# TEMPORARY serving config (2026-09-27): recipe candidate C10-P8X on dsv41-all 5e55c062.
+# CMP layers 0-9 whole, PRO layers 10-39 with the GPU expert cache over a RAM tier (no expert SSD reads), pipelined prefill
+# (sub-chunk 8192, generator chunk 32768), BF16 activation crossing, FP16 KV, 1M context. Original: ds41-exl3.yml (unchanged).
+# TabbyAPI config (published copy, 2026-09-27): DeepSeek-V4.1-Flash EXL3 3.0 bpw on exllamav3 branch dsv41-all 5e55c062.
+# The layout, pipeline and crossing come from the environment of the systemd drop-in (zz-temp-c10.conf), not from here.
+network:
+  host: 127.0.0.1          # the reverse proxy terminates TLS and checks the bearer token
+  port: 1920
+  disable_auth: true       # auth is at the edge; never bind this to 0.0.0.0
+  disable_fetch_requests: true
+  send_tracebacks: false
+  api_servers: ["OAI"]
+logging:
+  log_prompt: false
+  log_generation_params: false
+  log_requests: true
+model:
+  model_dir: /root/serve/models
+  model_name: DeepSeek-V4.1-Flash-EXL3-3.0bpw
+  backend: exllamav3
+  max_seq_len: 1048576
+  cache_size: 1048576
+  max_batch_size: 1        # one recurrent slot; concurrent requests queue
+  chunk_size: 8192         # TEMP C10 recipe (2026-09-27): load chunk 8192; the generator chunk is 32768 via TABBY_EXL3_GENERATOR_CHUNK
+  gpu_split_auto: true     # the layer split comes from EXL3_PLACEMENT (see the drop-in)
+  reasoning: true
+  tool_format: deepseek_v41  # V4.1 DSML spelling (serving/tabby-deepseek_v41-toolformat.patch)
+  start_in_reasoning: always
+  template_vars_default:
+    enable_thinking: true
+    reasoning_effort: high # the V4.1 template takes low | high | max | 1..100
+memory:
+  sysmem_recurrent_cache: 4096
+  sysmem_kv_cache: 0
+  cuda_malloc_async: true

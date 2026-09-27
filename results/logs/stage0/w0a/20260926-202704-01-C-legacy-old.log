@@ -1,0 +1,28 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- CPU-offloaded experts (worker): layers.12.ffn
+ -- CPU-offloaded experts (worker): layers.13.ffn
+ -- CPU-offloaded experts (worker): layers.14.ffn
+ -- CPU-offloaded experts (worker): layers.15.ffn
+ -- CPU-offloaded experts (worker): layers.16.ffn
+ -- CPU-offloaded experts (worker): layers.17.ffn
+ -- CPU-offloaded experts (worker): layers.18.ffn
+ -- CPU-offloaded experts (worker): layers.19.ffn
+ -- CPU-offloaded experts (worker): layers.20.ffn
+ -- CPU-offloaded experts (worker): layers.21.ffn
+ -- CPU-offloaded experts (worker): layers.22.ffn
+ -- DSV41 placement [split=12;cpu=12-22]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | CPU experts 12-22 (11) | replicas 12<-8 | top-k cross 8->12 8->13
+ -- CPU MoE worker started: 11 layers, avx512-vbmi, 12 threads
+-- loaded in 216.4 s; VRAM alloc [60.499, 88.54] GiB; numerics None; placement None; stable None
+-- legacy warm-up: 24 tokens, 8 new, ttft 0.461 s
+== legacy PREFILL n=8192: ttft 10.1024 s, 810.9 tok/s, foreign 0.0
+== legacy PREFILL n=33600: ttft 35.0764 s, 957.91 tok/s, foreign 0.0
+== legacy DECODE ctx=24: 22.876 tok/s (steady 23.006), ttft 0.3524 s, p50 42.656 ms, stalls 0, foreign 0.0, MoE-core foreign 0.002
+== legacy DECODE ctx=20000: 22.647 tok/s (steady 22.673), ttft 19.9008 s, p50 43.362 ms, stalls 0, foreign 0.0, MoE-core foreign 0.001
+-- cgroup at the end: {'path': '/system.slice/run-rf2b2c859f9ee4672ad8b507c7916d67d.scope', 'current': 110.895, 'peak': 111.0, 'max': 111.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 9112, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 4663.0, '1': 1378.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0a/results.jsonl (status ok, provisional False)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

@@ -1,0 +1,8 @@
+a: n 65: 17.20 ms + 0.315 ms/miss (R^2 0.960, rms 0.69 ms) -> t_pro = 0.430 ms per layer-token
+c: n 130 over splits [8, 10, 11, 12]: 21.47 ms + 0.195 ms per CMP layer + 0.274 ms/miss (R^2 0.910, rms 0.68 ms)
+   -> t_cmp - t_pro = 0.195 ms; with t_pro from a: t_cmp = 0.625 ms, fixed per-token cost of the split (crossing + second device) = 4.26 ms
+   A1M: n 65, misses/token mean 44.2, ms/token mean 31.10
+   C12: n 52, misses/token mean 14.3, ms/token mean 27.66
+   C11: n 26, misses/token mean 16.7, ms/token mean 28.28
+   C10: n 26, misses/token mean 18.7, ms/token mean 28.63
+   C8: n 26, misses/token mean 20.9, ms/token mean 28.70

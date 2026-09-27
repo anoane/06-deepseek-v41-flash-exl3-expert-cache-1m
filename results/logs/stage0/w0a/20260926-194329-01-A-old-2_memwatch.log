@@ -1,0 +1,7 @@
+2026-09-26 19:43:29 memwatch[2294700] pid=2294695 start floor=8388608kB interval=2s grace=10s avail=146445100kB target oom_score_adj=1000 cmd=[/bin/bash /root/rnd/release/all/aux/py_memwatch.sh /root/rnd/release/recipe/bench/dsv41_bench.py --label A-old-2 --run-id 20260926-194329-01-A-old-2 --results /root/rnd/release/recipe/stage0/w0a/resul]
+2026-09-26 19:44:30 memwatch[2294700] pid=2294695 ok avail=143215548kB min=143188556kB rss=4472952kB psi=[some avg10=0.00 avg60=0.23 avg300=1.03 total=133501515]
+2026-09-26 19:45:30 memwatch[2294700] pid=2294695 ok avail=143129428kB min=143115888kB rss=4481308kB psi=[some avg10=0.00 avg60=0.08 avg300=0.83 total=133501515]
+2026-09-26 19:46:30 memwatch[2294700] pid=2294695 ok avail=118597720kB min=118597720kB rss=24130228kB psi=[some avg10=0.81 avg60=0.26 avg300=0.73 total=133740932]
+2026-09-26 19:47:30 memwatch[2294700] pid=2294695 ok avail=83055912kB min=82825228kB rss=61128240kB psi=[some avg10=2.68 avg60=4.49 avg300=1.92 total=138275215]
+2026-09-26 19:48:30 memwatch[2294700] pid=2294695 ok avail=83428960kB min=82825228kB rss=61361392kB psi=[some avg10=0.00 avg60=1.65 avg300=1.56 total=138350785]
+2026-09-26 19:49:14 memwatch[2294700] pid=2294695 target exited on its own; min MemAvailable seen 82825228kB

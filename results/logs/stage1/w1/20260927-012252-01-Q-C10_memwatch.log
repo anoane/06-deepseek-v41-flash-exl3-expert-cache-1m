@@ -1,0 +1,5 @@
+2026-09-27 01:22:52 memwatch[2911087] pid=2911082 start floor=8388608kB interval=2s grace=10s avail=145053644kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench2/dsv41_bench.py --label Q-C10 --run-id 20260927-012252-01-Q-C10 --results /]
+2026-09-27 01:23:52 memwatch[2911087] pid=2911082 ok avail=142404600kB min=142391456kB rss=4605416kB psi=[some avg10=0.00 avg60=0.01 avg300=0.20 total=249407906]
+2026-09-27 01:24:52 memwatch[2911087] pid=2911082 ok avail=142199084kB min=142199084kB rss=4607332kB psi=[some avg10=0.00 avg60=0.00 avg300=0.16 total=249407906]
+2026-09-27 01:25:52 memwatch[2911087] pid=2911082 ok avail=68046360kB min=68046360kB rss=78002688kB psi=[some avg10=0.86 avg60=1.73 avg300=0.65 total=251177606]
+2026-09-27 01:26:40 memwatch[2911087] pid=2911082 target exited on its own; min MemAvailable seen 67659260kB

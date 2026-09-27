@@ -1,0 +1,336 @@
+[2026-09-26T19:31:37+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/01-A-old-1.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T19:31:37+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T19:31:37+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          20          73           0          82         140
+    Swap:              0           0           0
+[2026-09-26T19:31:37+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 31, 95.99 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 38, 67.28 W, 150.00 W, 0 MiB
+[2026-09-26T19:31:37+00:00] loadavg 0.25 0.15 0.69 1/504 2271878
+[2026-09-26T19:31:37+00:00] START [1] A-old-1 run_id 20260926-193137-01-A-old-1
+[2026-09-26T19:31:37+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT=split=12;cpu=12-22 EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync
+[2026-09-26T19:31:37+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+[2026-09-26T19:31:37+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T19:37:28+00:00]   monitor: min MemAvailable 80358 MiB, max GPU memory used 158780 MiB (per nvidia-smi index: 94094,64686)
+RESULT 20260926-193137-01-A-old-1: status ok rc 0
+[2026-09-26T19:37:28+00:00] END [1] A-old-1 rc=0 (351 s)
+[2026-09-26T19:37:28+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          72           0          81         139
+    Swap:              0           0           0
+[2026-09-26T19:37:28+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 44, 96.90 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 43, 62.41 W, 150.00 W, 0 MiB
+[2026-09-26T19:37:28+00:00] loadavg 6.92 5.13 2.82 1/506 2283171
+[2026-09-26T19:37:28+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T19:37:28+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T19:37:28+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T19:37:28+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/02-A-new-1.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T19:37:28+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T19:37:28+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          72           0          81         139
+    Swap:              0           0           0
+[2026-09-26T19:37:28+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 44, 96.90 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 43, 67.05 W, 150.00 W, 0 MiB
+[2026-09-26T19:37:28+00:00] loadavg 6.92 5.13 2.82 1/506 2283272
+[2026-09-26T19:37:28+00:00] START [1] A-new-1 run_id 20260926-193728-01-A-new-1
+[2026-09-26T19:37:28+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T19:37:28+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+[2026-09-26T19:37:28+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T19:43:29+00:00]   monitor: min MemAvailable 79613 MiB, max GPU memory used 158748 MiB (per nvidia-smi index: 94062,64686)
+RESULT 20260926-193728-01-A-new-1: status ok rc 0
+[2026-09-26T19:43:29+00:00] END [1] A-new-1 rc=0 (361 s)
+[2026-09-26T19:43:29+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          69           0          85         139
+    Swap:              0           0           0
+[2026-09-26T19:43:29+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 96.89 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 44, 62.26 W, 150.00 W, 0 MiB
+[2026-09-26T19:43:29+00:00] loadavg 7.27 7.06 4.49 1/511 2294571
+[2026-09-26T19:43:29+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T19:43:29+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T19:43:29+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T19:43:29+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/03-A-old-2.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T19:43:29+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T19:43:29+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          69           0          85         139
+    Swap:              0           0           0
+[2026-09-26T19:43:29+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 96.89 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 44, 67.64 W, 150.00 W, 0 MiB
+[2026-09-26T19:43:29+00:00] loadavg 7.27 7.06 4.49 1/511 2294672
+[2026-09-26T19:43:29+00:00] START [1] A-old-2 run_id 20260926-194329-01-A-old-2
+[2026-09-26T19:43:29+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT=split=12;cpu=12-22 EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync
+[2026-09-26T19:43:29+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+[2026-09-26T19:43:29+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T19:49:20+00:00]   monitor: min MemAvailable 77858 MiB, max GPU memory used 158812 MiB (per nvidia-smi index: 94126,64686)
+RESULT 20260926-194329-01-A-old-2: status ok rc 0
+[2026-09-26T19:49:20+00:00] END [1] A-old-2 rc=0 (351 s)
+[2026-09-26T19:49:20+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          68           0          86         139
+    Swap:              0           0           0
+[2026-09-26T19:49:20+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 90.58 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 42, 36.38 W, 150.00 W, 0 MiB
+[2026-09-26T19:49:21+00:00] loadavg 6.87 7.16 5.36 1/501 2305152
+[2026-09-26T19:49:21+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T19:49:21+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T19:49:21+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T19:49:21+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/04-A-new-2.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T19:49:21+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T19:49:21+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          68           0          86         139
+    Swap:              0           0           0
+[2026-09-26T19:49:21+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 90.58 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 42, 36.16 W, 150.00 W, 0 MiB
+[2026-09-26T19:49:21+00:00] loadavg 6.87 7.16 5.36 1/501 2305253
+[2026-09-26T19:49:21+00:00] START [1] A-new-2 run_id 20260926-194921-01-A-new-2
+[2026-09-26T19:49:21+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T19:49:21+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+[2026-09-26T19:49:21+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T19:55:21+00:00]   monitor: min MemAvailable 77792 MiB, max GPU memory used 158716 MiB (per nvidia-smi index: 94062,64654)
+RESULT 20260926-194921-01-A-new-2: status ok rc 0
+[2026-09-26T19:55:21+00:00] END [1] A-new-2 rc=0 (360 s)
+[2026-09-26T19:55:21+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          67           0          86         139
+    Swap:              0           0           0
+[2026-09-26T19:55:21+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 46, 96.86 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 44, 62.72 W, 150.00 W, 0 MiB
+[2026-09-26T19:55:21+00:00] loadavg 5.81 6.73 5.81 1/500 2316362
+[2026-09-26T19:55:21+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T19:55:21+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T19:55:21+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T19:55:21+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/05-A-old-3.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T19:55:21+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T19:55:21+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          67           0          86         139
+    Swap:              0           0           0
+[2026-09-26T19:55:21+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 46, 96.86 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 45, 67.99 W, 150.00 W, 0 MiB
+[2026-09-26T19:55:21+00:00] loadavg 5.81 6.73 5.81 1/500 2316463
+[2026-09-26T19:55:21+00:00] START [1] A-old-3 run_id 20260926-195521-01-A-old-3
+[2026-09-26T19:55:21+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT=split=12;cpu=12-22 EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync
+[2026-09-26T19:55:21+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 4fa4d0749921
+[2026-09-26T19:55:21+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:01:25+00:00]   monitor: min MemAvailable 80845 MiB, max GPU memory used 158844 MiB (per nvidia-smi index: 94158,64686)
+RESULT 20260926-195521-01-A-old-3: status ok rc 0
+[2026-09-26T20:01:25+00:00] END [1] A-old-3 rc=0 (364 s)
+[2026-09-26T20:01:25+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          69           0          84         138
+    Swap:              0           0           0
+[2026-09-26T20:01:25+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 46, 93.99 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 45, 64.57 W, 150.00 W, 0 MiB
+[2026-09-26T20:01:25+00:00] loadavg 7.04 7.39 6.45 2/514 2331942
+[2026-09-26T20:01:25+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:01:25+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:01:25+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:01:25+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/06-A-new-3.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:01:25+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:01:25+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          69           0          84         138
+    Swap:              0           0           0
+[2026-09-26T20:01:25+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 46, 93.99 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 45, 67.94 W, 150.00 W, 0 MiB
+[2026-09-26T20:01:25+00:00] loadavg 7.04 7.39 6.45 2/514 2332043
+[2026-09-26T20:01:25+00:00] START [1] A-new-3 run_id 20260926-200125-01-A-new-3
+[2026-09-26T20:01:25+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T20:01:25+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 1 --expect-native-sha 823174af46fb
+[2026-09-26T20:01:25+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:07:26+00:00]   monitor: min MemAvailable 77708 MiB, max GPU memory used 158716 MiB (per nvidia-smi index: 94062,64654)
+RESULT 20260926-200125-01-A-new-3: status ok rc 0
+[2026-09-26T20:07:26+00:00] END [1] A-new-3 rc=0 (361 s)
+[2026-09-26T20:07:26+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          85         138
+    Swap:              0           0           0
+[2026-09-26T20:07:26+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 47, 97.02 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 63.69 W, 150.00 W, 0 MiB
+[2026-09-26T20:07:26+00:00] loadavg 7.13 7.51 6.82 1/507 2343512
+[2026-09-26T20:07:26+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:07:26+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:07:26+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:07:26+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/07-B-np.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 1080 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:07:26+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:07:26+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          85         138
+    Swap:              0           0           0
+[2026-09-26T20:07:26+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 47, 97.02 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 67.81 W, 150.00 W, 0 MiB
+[2026-09-26T20:07:26+00:00] loadavg 7.13 7.51 6.82 1/507 2343622
+[2026-09-26T20:07:26+00:00] START [1] B-np run_id 20260926-200726-01-B-np
+[2026-09-26T20:07:26+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T20:07:26+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 8 --no-raw --vary numerics=deepseek:index/precise/deepseek:index/precise/precise/deepseek:index/precise/deepseek:index --vary xdev_bf16=0/0/1/1/1/1/0/0 --expect-native-sha 823174af46fb
+[2026-09-26T20:07:26+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:17:44+00:00]   monitor: min MemAvailable 80291 MiB, max GPU memory used 158780 MiB (per nvidia-smi index: 94158,64622)
+RESULT 20260926-200726-01-B-np: status ok rc 0
+[2026-09-26T20:17:44+00:00] END [1] B-np rc=0 (618 s)
+[2026-09-26T20:17:44+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          70           0          84         139
+    Swap:              0           0           0
+[2026-09-26T20:17:44+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 50, 97.84 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 48, 65.95 W, 150.00 W, 0 MiB
+[2026-09-26T20:17:44+00:00] loadavg 7.55 7.48 7.17 1/522 2366541
+[2026-09-26T20:17:44+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:17:44+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:17:44+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:17:44+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/08-B-det.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 720 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:17:45+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:17:45+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          21          70           0          84         139
+    Swap:              0           0           0
+[2026-09-26T20:17:45+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 50, 97.84 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 48, 71.04 W, 150.00 W, 0 MiB
+[2026-09-26T20:17:45+00:00] loadavg 7.55 7.48 7.17 1/522 2366648
+[2026-09-26T20:17:45+00:00] START [1] B-det run_id 20260926-201745-01-B-det
+[2026-09-26T20:17:45+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 EXL3_MOE_FUSED_DET=0
+[2026-09-26T20:17:45+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 2 --no-raw --expect-native-sha 823174af46fb
+[2026-09-26T20:17:45+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:22:40+00:00]   monitor: min MemAvailable 80213 MiB, max GPU memory used 158940 MiB (per nvidia-smi index: 94062,64878)
+RESULT 20260926-201745-01-B-det: status ok rc 0
+[2026-09-26T20:22:40+00:00] END [1] B-det rc=0 (295 s)
+[2026-09-26T20:22:40+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          85         138
+    Swap:              0           0           0
+[2026-09-26T20:22:40+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 97.66 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 64.21 W, 150.00 W, 0 MiB
+[2026-09-26T20:22:40+00:00] loadavg 6.92 7.60 7.33 2/517 2375531
+[2026-09-26T20:22:40+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:22:40+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:22:40+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:22:40+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/09-D-rc.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 840 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:22:40+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:22:40+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          85         138
+    Swap:              0           0           0
+[2026-09-26T20:22:40+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 97.66 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 69.87 W, 150.00 W, 0 MiB
+[2026-09-26T20:22:40+00:00] loadavg 6.92 7.60 7.33 2/517 2375638
+[2026-09-26T20:22:40+00:00] START [1] D-rc run_id 20260926-202240-01-D-rc
+[2026-09-26T20:22:40+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T20:22:40+00:00]   args: --modes speed --prompt-tokens 32768 --gen-tokens 256 --repeats 4 --no-raw --vary recurrent_cache_mb=0/4096/4096/0 --expect-native-sha 823174af46fb
+[2026-09-26T20:22:40+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:27:03+00:00]   monitor: min MemAvailable 77134 MiB, max GPU memory used 158426 MiB (per nvidia-smi index: 93948,64478)
+RESULT 20260926-202240-01-D-rc: status error rc 1 error KeyError: 'dictionary is empty'
+[2026-09-26T20:27:03+00:00] END [1] D-rc rc=1 (263 s)
+[2026-09-26T20:27:03+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          67           0          87         138
+    Swap:              0           0           0
+[2026-09-26T20:27:03+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 43, 95.41 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 45, 63.15 W, 150.00 W, 0 MiB
+[2026-09-26T20:27:03+00:00] loadavg 6.06 7.20 7.27 2/517 2383934
+[2026-09-26T20:27:03+00:00] BATCH DONE: 1 configs, 1 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:27:03+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:27:03+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:27:04+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/10-C-legacy-old.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 600 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:27:04+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:27:04+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          67           0          87         138
+    Swap:              0           0           0
+[2026-09-26T20:27:04+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 43, 95.41 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 45, 68.13 W, 150.00 W, 0 MiB
+[2026-09-26T20:27:04+00:00] loadavg 6.06 7.20 7.27 1/516 2384058
+[2026-09-26T20:27:04+00:00] START [1] C-legacy-old run_id 20260926-202704-01-C-legacy-old
+[2026-09-26T20:27:04+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem_serve.sh MEMMAX=111G PYTHONPATH=/root/workspace/wt-dsv41-crnd:/root/.cache/torch_extensions/py312_cu132/exllamav3_ext EXL3_DSV41_PLACEMENT=split=12;cpu=12-22 EXL3_MOE_CPU_OFFLOAD=11 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4 EXL3_DSV41_XDEV_BF16=0
+[2026-09-26T20:27:04+00:00]   args: --modes legacy --chunk 4096 --cache-tokens 1048576 --reserve-mb -1 --gen-tokens 128 --legacy-prefill 8192,33600 --legacy-decode-ctx 24,20000 --expect-native-sha 4fa4d0749921
+[2026-09-26T20:27:04+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:32:06+00:00]   monitor: min MemAvailable 80493 MiB, max GPU memory used 157382 MiB (per nvidia-smi index: 93224,64158)
+RESULT 20260926-202704-01-C-legacy-old: status ok rc 0
+[2026-09-26T20:32:06+00:00] END [1] C-legacy-old rc=0 (302 s)
+[2026-09-26T20:32:06+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          72           0          82         138
+    Swap:              0           0           0
+[2026-09-26T20:32:06+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 95.81 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 64.48 W, 150.00 W, 0 MiB
+[2026-09-26T20:32:06+00:00] loadavg 7.61 7.71 7.48 1/513 2393267
+[2026-09-26T20:32:06+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:32:06+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:32:06+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:32:06+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/11-C-legacy-new.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 600 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:32:07+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:32:07+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          72           0          82         138
+    Swap:              0           0           0
+[2026-09-26T20:32:07+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 95.81 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 68.33 W, 150.00 W, 0 MiB
+[2026-09-26T20:32:07+00:00] loadavg 7.61 7.71 7.48 1/513 2393368
+[2026-09-26T20:32:07+00:00] START [1] C-legacy-new run_id 20260926-203207-01-C-legacy-new
+[2026-09-26T20:32:07+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T20:32:07+00:00]   args: --modes legacy --chunk 4096 --cache-tokens 1048576 --reserve-mb -1 --gen-tokens 128 --legacy-prefill 8192,33600 --legacy-decode-ctx 24,20000 --expect-native-sha 823174af46fb
+[2026-09-26T20:32:07+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:37:10+00:00]   monitor: min MemAvailable 80555 MiB, max GPU memory used 157550 MiB (per nvidia-smi index: 93366,64184)
+RESULT 20260926-203207-01-C-legacy-new: status ok rc 0
+[2026-09-26T20:37:11+00:00] END [1] C-legacy-new rc=0 (304 s)
+[2026-09-26T20:37:11+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          86         138
+    Swap:              0           0           0
+[2026-09-26T20:37:11+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 96.18 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 64.38 W, 150.00 W, 0 MiB
+[2026-09-26T20:37:11+00:00] loadavg 6.43 7.39 7.44 2/511 2402413
+[2026-09-26T20:37:11+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:37:11+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:37:11+00:00] restored power limit gpu 1 -> 200 W
+[2026-09-26T20:37:11+00:00] BATCH /root/rnd/release/recipe/stage0/w0a/lines/12-E-L0.batch -> /root/rnd/release/recipe/stage0/w0a (timeout 600 s, caps 300,150, cores 0-15, dry 0)
+[2026-09-26T20:37:11+00:00] power caps set: gpu0 300 W, gpu1 150 W (were: 400 200 )
+[2026-09-26T20:37:11+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          68           0          86         138
+    Swap:              0           0           0
+[2026-09-26T20:37:11+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 96.18 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 69.69 W, 150.00 W, 0 MiB
+[2026-09-26T20:37:11+00:00] loadavg 6.43 7.39 7.44 2/511 2402520
+[2026-09-26T20:37:11+00:00] START [1] E-L0 run_id 20260926-203711-01-E-L0
+[2026-09-26T20:37:11+00:00]   env: MEMWATCH_PY=/root/rnd/release/recipe/bench/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=111G EXL3_PLACEMENT=0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1 EXL3_MOE_PINNED_ARENA=1 EXL3_MOE_CPU_WSLOTS=4
+[2026-09-26T20:37:11+00:00]   args: --modes quality --quality-tokens 65536 --anchor /root/rnd/release/all/val/w1/runs-a/20260926-144016-09-W1-c-quality_quality.npz --anchor /root/rnd/proof/n64k_serving_deepseek-index.npz --anchor /root/rnd/numerics/n64k2_deepseek-index.npz --expect-native-sha 823174af46fb
+[2026-09-26T20:37:11+00:00]   python: /root/rnd/release/all/aux/py_memwatch.sh
+[2026-09-26T20:42:03+00:00]   monitor: min MemAvailable 80657 MiB, max GPU memory used 155642 MiB (per nvidia-smi index: 92316,63326)
+RESULT 20260926-203711-01-E-L0: status ok rc 0
+[2026-09-26T20:42:03+00:00] END [1] E-L0 rc=0 (292 s)
+[2026-09-26T20:42:03+00:00] free -g:
+                   total        used        free      shared  buff/cache   available
+    Mem:             160          22          67           0          87         138
+    Swap:              0           0           0
+[2026-09-26T20:42:03+00:00] gpus:
+    0, NVIDIA RTX PRO 6000 Blackwell Workstation Edition, 45, 97.14 W, 300.00 W, 2 MiB
+    1, NVIDIA Graphics Device, 46, 64.08 W, 150.00 W, 0 MiB
+[2026-09-26T20:42:03+00:00] loadavg 5.94 7.13 7.37 2/526 2411274
+[2026-09-26T20:42:03+00:00] BATCH DONE: 1 configs, 0 failed; results /root/rnd/release/recipe/stage0/w0a/results.jsonl (mirrored to /root/rnd/release/recipe/bench/results/all.jsonl)
+[2026-09-26T20:42:03+00:00] restored power limit gpu 0 -> 400 W
+[2026-09-26T20:42:03+00:00] restored power limit gpu 1 -> 200 W

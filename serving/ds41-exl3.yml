@@ -1,0 +1,32 @@
+# TabbyAPI config of the OLD production (published copy): the old V4.1 tree, CMP layers 0-11, CPU experts 12-22.
+# The layout comes from the environment of ds41-exl3.service (EXL3_DSV41_PLACEMENT, EXL3_MOE_CPU_OFFLOAD).
+network:
+  host: 127.0.0.1          # the reverse proxy terminates TLS and checks the bearer token
+  port: 1920
+  disable_auth: true       # auth is at the edge; never bind this to 0.0.0.0
+  disable_fetch_requests: true
+  send_tracebacks: false
+  api_servers: ["OAI"]
+logging:
+  log_prompt: false
+  log_generation_params: false
+  log_requests: true
+model:
+  model_dir: /root/serve/models
+  model_name: DeepSeek-V4.1-Flash-EXL3-3.0bpw
+  backend: exllamav3
+  max_seq_len: 1048576
+  cache_size: 1048576
+  max_batch_size: 1        # one recurrent slot; concurrent requests queue
+  chunk_size: 4096         # measured best at a 1M cache (33.6K prefill ~1000 tok/s)
+  gpu_split_auto: true     # the layer split comes from EXL3_DSV41_PLACEMENT (see the unit)
+  reasoning: true
+  tool_format: deepseek_v41  # V4.1 DSML spelling (serving/tabby-deepseek_v41-toolformat.patch)
+  start_in_reasoning: always
+  template_vars_default:
+    enable_thinking: true
+    reasoning_effort: high # the V4.1 template takes low | high | max | 1..100
+memory:
+  sysmem_recurrent_cache: 4096
+  sysmem_kv_cache: 0
+  cuda_malloc_async: true

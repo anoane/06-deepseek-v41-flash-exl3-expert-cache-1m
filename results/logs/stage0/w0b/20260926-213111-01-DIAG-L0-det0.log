@@ -1,0 +1,70 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): routed experts 52.4 GiB (placement: 11 layers), n-gram tables 0 (every row streams from disk); 110.4 GiB available (memory cgroup /system.slice/run-r8c7218b90edf4f2ca559a1328a43024a.scope)
+ -- CPU-offloaded experts (worker): layers.12.ffn
+ -- CPU-offloaded experts (worker): layers.13.ffn
+ -- CPU-offloaded experts (worker): layers.14.ffn
+ -- CPU-offloaded experts (worker): layers.15.ffn
+ -- CPU-offloaded experts (worker): layers.16.ffn
+ -- CPU-offloaded experts (worker): layers.17.ffn
+ -- CPU-offloaded experts (worker): layers.18.ffn
+ -- CPU-offloaded experts (worker): layers.19.ffn
+ -- CPU-offloaded experts (worker): layers.20.ffn
+ -- CPU-offloaded experts (worker): layers.21.ffn
+ -- CPU-offloaded experts (worker): layers.22.ffn
+ -- DSV41 placement [0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- CPU MoE worker started: 11 layers, avx512-vbmi, 12 threads
+-- loaded in 215.9 s; VRAM alloc [60.499, 88.54] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-22=cuda:1 experts=cpu; 23-39=cuda:1; stable False
+-- warmup P=8192 G=2: ttft 10.1251 s, decode 13.238 tok/s
+ !! job 1 failed in the generator: OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.60 GiB
+Requested               : 320.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 33.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+Traceback (most recent call last):
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/generator.py", line 534, in iterate
+    job.prefill(results)
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/generator/job.py", line 1399, in prefill
+    self.generator.model.prefill(input_ids = prefill_ids, params = params)
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/architecture/deepseek_v41.py", line 755, in prefill
+    return super().prefill(input_ids, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/model/model.py", line 374, in prefill
+    y = self.prefill_ls(x, params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/model/model_ls.py", line 384, in prefill_ls
+    x = module.forward(x, params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_block.py", line 218, in forward
+    x = self._engram(x, params, "engram" in ablate)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_block.py", line 190, in _engram
+    return self.engram.forward(x, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-b8105f2d6a05/exllamav3/modules/dsv41_engram.py", line 792, in forward
+    dot = (h * self.qk * key).sum(-1) * rstd * D ** -0.5
+           ~~~~~~~~~~~~^~~~~
+torch.OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.60 GiB
+Requested               : 320.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 33.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+
+== gen_P32768_r0: TTFT None s, prefill None tok/s, decode None tok/s (p50 None ms, p90 None ms, stalls None), cached None, read 663.3 MiB (tree 663.3, majflt 20), foreign 0.0, MoE-core foreign 0.001, 16-23 busy 1.3%, tier SSD reads None, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 110.996 GiB
+-- cgroup at the end: {'path': '/system.slice/run-r8c7218b90edf4f2ca559a1328a43024a.scope', 'current': 110.977, 'peak': 111.0, 'max': 111.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 6621, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3825.0, '1': 658.0}
+-- result line appended to /root/rnd/release/recipe/stage0/w0b/results.jsonl (status ok, provisional False)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

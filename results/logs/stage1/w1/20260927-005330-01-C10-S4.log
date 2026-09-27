@@ -1,0 +1,27 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-red6785b5f12947178b3ffe9dc7d0144e.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5798 slots (71.7 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 71.1 GiB pinned (static 0 MiB + tier 5730 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 43.2 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5790 VRAM and 5730 RAM experts, 142.9 GiB read in 19.2 s; 71.1 GiB of RAM page-locked in 2.6 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-9=cuda:0; 10-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-9 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.10-39,hc_head,norm,head | replicas 10<-8 | top-k cross 8->10-13 | candidates cross none
+ -- DSV41 pipelined prefill: eligible, 12 modules on cuda:0, 33 on cuda:1, sub-chunk 4096
+-- engram page drop: 188.8 GiB advised, resident 22.54 -> 0.00 GiB
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 11520, "slots": 5798, "spare": 8, "held": 5790, "staging_slots": 768, "pool_gib": 71.661, "staging_gib": 9.492}], "cached": 11520, "hot": 0, "tier_slots": 5730, "ram_gib": 71.083, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 43.187}
+-- loaded in 167.5 s; VRAM alloc [50.634, 88.142] GiB; numerics deepseek:index; placement 0-9=cuda:0; 10-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable False
+== S4-512K_t0 P=524288 cached=0 G=256: TTFT 373.8128 s, prefill 1402.54 (delta 1402.54) tok/s, decode 30.432 tok/s (p50 30.937 ms, stalls 0), hit 0.89024, miss/token 19.757, H2D 262.194 MB/token, staged 9770.179 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 118.989 GiB
+== S4-512K_t1 P=524352 cached=524288 G=256: TTFT 0.3482 s, prefill 1505775.22 (delta 183.8) tok/s, decode 36.726 tok/s (p50 27.263 ms, stalls 0), hit 0.96011, miss/token 7.18, H2D 95.291 MB/token, staged 3.212 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 118.986 GiB
+== S4-512K_t2 P=524352 cached=524288 G=256: TTFT 0.3741 s, prefill 1401713.0 (delta 171.08) tok/s, decode 37.265 tok/s (p50 26.969 ms, stalls 0), hit 0.96222, miss/token 6.8, H2D 90.243 MB/token, staged 4.472 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 118.921 GiB
+== S4-512K_t3 P=524352 cached=524288 G=256: TTFT 0.3875 s, prefill 1353088.61 (delta 165.16) tok/s, decode 37.789 tok/s (p50 26.774 ms, stalls 0), hit 0.96157, miss/token 6.918, H2D 91.804 MB/token, staged 5.521 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 118.931 GiB
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-red6785b5f12947178b3ffe9dc7d0144e.scope', 'current': 118.911, 'peak': 119.0, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 1834, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 3911.0, '1': 10124.0}
+-- result line appended to /root/rnd/release/recipe/stage1/w1/results.jsonl (status ok, provisional False)

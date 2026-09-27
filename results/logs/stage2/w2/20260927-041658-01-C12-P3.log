@@ -1,0 +1,83 @@
+ !! Overriding layers.1.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.1.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00002-of-00041.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00047-of-00048.safetensors
+ !! Overriding layers.14.engram.k_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Overriding layers.14.engram.q_weight from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00048-of-00048.safetensors with /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw/model-00015-of-00041.safetensors
+ !! Replaced 4 tensors from /root/serve/models/DeepSeek-V4.1-Flash-EXL3-3.0bpw
+ -- RAM budget (text): n-gram tables 0 (every row streams from disk); 118.4 GiB available (memory cgroup /system.slice/run-rc70a7215d2aa4788bfc64cfcc8d4df61.scope)
+ -- expert tiers: cuda:1 cache auto (sized at the end of the load, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 0 MiB pinned (static 0 MiB + tier sized at the end of the load (experts=all)), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: experts on disk only counted at the end of the load; 118.4 GiB of RAM left unpinned
+ -- expert tiers: cuda:1 cache 5818 slots (71.9 GiB, 8 spare, evict=lru admit=adaptive; staging 768 slots (9.5 GiB, double))
+    ram experts 61.3 GiB pinned (static 0 MiB + tier 4942 slots), policy exclusive demote=heat, evict=lfu
+    ngram 0 MiB (every row streams from disk)
+    disk experts=off io=auto: 0 experts on disk only; 53.0 GiB of RAM left unpinned
+ -- expert cache cuda:1: cold fill of 5810 VRAM and 4942 RAM experts, 133.3 GiB read in 17.8 s; 61.3 GiB of RAM page-locked in 2.3 s; seeded from a round robin across layers (no profile or heat file)
+ -- DSV41 placement [0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off]: cpu embed | cuda:0 (NVIDIA Graphics Device) hc_expand,layers.0-11 | cuda:1 (NVIDIA RTX PRO 6000 Blackwell Workstation Edition) layers.12-39,hc_head,norm,head | replicas 12<-8 | top-k cross 8->12-13 | candidates cross none
+ -- DSV41 pipelined prefill: eligible, 14 modules on cuda:0, 31 on cuda:1, sub-chunk 3072
+-- engram page drop: 188.8 GiB advised, resident 22.10 -> 0.00 GiB
+-- tier sizing: {"devices": [{"device": "cuda:1", "cached": 10752, "slots": 5818, "spare": 8, "held": 5810, "staging_slots": 768, "pool_gib": 71.908, "staging_gib": 9.492}], "cached": 10752, "hot": 0, "tier_slots": 4942, "ram_gib": 61.307, "static_gib": 0.0, "ngram_gib": 0.0, "slab_slots": 0, "slab_gib": 0.0, "disk_only": 0, "left_unpinned_gib": 52.96}
+-- loaded in 192.9 s; VRAM alloc [60.499, 88.15] GiB; numerics deepseek:index; placement 0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off; stable False
+== S0 P=2048 cached=0 G=512: TTFT 3.645 s, prefill 561.86 (delta 561.87) tok/s, decode 35.507 tok/s (p50 27.018 ms, stalls 0), hit 0.93485, miss/token 10.945, H2D 145.254 MB/token, staged 97.356 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 87.447 GiB
+== S1-32K@100000 P=32768 cached=0 G=256: TTFT 24.7839 s, prefill 1322.15 (delta 1322.15) tok/s, decode 35.882 tok/s (p50 26.944 ms, stalls 0), hit 0.93217, miss/token 11.396, H2D 151.238 MB/token, staged 745.076 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 92.366 GiB
+== S2-32K@100000 P=32768 cached=0 G=256: TTFT 24.1886 s, prefill 1354.69 (delta 1354.69) tok/s, decode 41.528 tok/s (p50 24.032 ms, stalls 0), hit 0.98256, miss/token 2.929, H2D 38.876 MB/token, staged 735.335 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 92.365 GiB
+== S1-32K@140000 P=32768 cached=0 G=256: TTFT 24.299 s, prefill 1348.53 (delta 1348.53) tok/s, decode 36.652 tok/s (p50 26.976 ms, stalls 0), hit 0.91534, miss/token 14.224, H2D 188.761 MB/token, staged 735.866 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 96.026 GiB
+ !! job 0 failed in the generator: OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.58 GiB
+Requested               : 240.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 15.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+Traceback (most recent call last):
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/generator/generator.py", line 534, in iterate
+    job.prefill(results)
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/generator/job.py", line 1399, in prefill
+    self.generator.model.prefill(input_ids = prefill_ids, params = params)
+  File "/usr/local/lib/python3.12/dist-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/architecture/deepseek_v41.py", line 754, in prefill
+    return pipeline.prefill_pipelined(self, input_ids, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/architecture/dsv41/pipeline.py", line 371, in prefill_pipelined
+    args = stage1(a, b)                      # overlaps the worker's S2 of the previous chunk
+           ^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/architecture/dsv41/pipeline.py", line 331, in stage1
+    x = _run(model, plan.st1, x, p)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/architecture/dsv41/pipeline.py", line 264, in _run
+    x = module.forward(x, params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/modules/dsv41_block.py", line 218, in forward
+    x = self._engram(x, params, "engram" in ablate)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/modules/dsv41_block.py", line 190, in _engram
+    return self.engram.forward(x, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rnd/release/all/src-5e55c0627ece/exllamav3/modules/dsv41_engram.py", line 792, in forward
+    dot = (h * self.qk * key).sum(-1) * rstd * D ** -0.5
+           ~~~~~~~~~~~~^~~~~
+torch.OutOfMemoryError: Allocation on device 0 would exceed allowed memory. (out of memory)
+Currently allocated     : 61.58 GiB
+Requested               : 240.00 MiB
+Device limit            : 63.39 GiB
+Free (according to CUDA): 15.38 MiB
+PyTorch limit (set by user-supplied memory fraction)
+                        : 63.39 GiB
+
+== S2-32K@140000 P=32768 cached=0 G=256: TTFT None s, prefill None (delta None) tok/s, decode None tok/s (p50 None ms, stalls None), hit None, miss/token 0.0, H2D 0.0 MB/token, staged 0.0 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 96.052 GiB
+== S1-128K@200000 P=131072 cached=0 G=256: TTFT 93.5931 s, prefill 1400.44 (delta 1400.45) tok/s, decode 36.252 tok/s (p50 27.093 ms, stalls 0), hit 0.91608, miss/token 14.098, H2D 187.096 MB/token, staged 2839.578 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 104.809 GiB
+== S3_t1 P=16384 cached=0 G=256: TTFT 13.7241 s, prefill 1193.81 (delta 1193.81) tok/s, decode 34.839 tok/s (p50 28.11 ms, stalls 0), hit 0.88308, miss/token 19.643, H2D 260.685 MB/token, staged 414.415 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 106.184 GiB
+== S3_t2 P=17664 cached=16384 G=256: TTFT 2.5961 s, prefill 6803.98 (delta 493.05) tok/s, decode 36.593 tok/s (p50 27.082 ms, stalls 0), hit 0.90819, miss/token 15.424, H2D 204.686 MB/token, staged 80.595 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 106.246 GiB
+== S3_t3 P=22016 cached=17408 G=256: TTFT 5.1628 s, prefill 4264.37 (delta 892.54) tok/s, decode 37.271 tok/s (p50 26.536 ms, stalls 0), hit 0.92017, miss/token 13.412, H2D 177.988 MB/token, staged 147.096 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 106.529 GiB
+== S3_t4 P=22784 cached=21760 G=256: TTFT 2.5314 s, prefill 9000.62 (delta 404.52) tok/s, decode 38.237 tok/s (p50 25.965 ms, stalls 0), hit 0.93866, miss/token 10.306, H2D 136.77 MB/token, staged 82.718 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 106.586 GiB
+== S3_t5 P=31232 cached=22528 G=256: TTFT 7.1723 s, prefill 4354.53 (delta 1213.56) tok/s, decode 37.058 tok/s (p50 26.746 ms, stalls 0), hit 0.9183, miss/token 13.725, H2D 182.152 MB/token, staged 206.803 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 107.282 GiB
+== S3_t6 P=33536 cached=30976 G=256: TTFT 3.2342 s, prefill 10369.02 (delta 791.54) tok/s, decode 37.83 tok/s (p50 26.0 ms, stalls 0), hit 0.92927, miss/token 11.882, H2D 157.691 MB/token, staged 78.684 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 107.388 GiB
+== S5_t7 P=37888 cached=33280 G=512: TTFT 5.4613 s, prefill 6937.6 (delta 843.76) tok/s, decode 31.943 tok/s (p50 30.345 ms, stalls 0), hit 0.8359, miss/token 27.569, H2D 365.876 MB/token, staged 157.7 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 108.079 GiB
+== S5_t8 P=40448 cached=37632 G=256: TTFT 3.4127 s, prefill 11852.22 (delta 825.15) tok/s, decode 36.039 tok/s (p50 27.312 ms, stalls 0), hit 0.90152, miss/token 16.545, H2D 219.571 MB/token, staged 79.215 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 108.24 GiB
+== S5b P=8192 cached=0 G=256: TTFT 7.475 s, prefill 1095.92 (delta 1095.92) tok/s, decode 31.593 tok/s (p50 30.622 ms, stalls 0), hit 0.82911, miss/token 28.71, H2D 381.009 MB/token, staged 223.498 GB, SSD 0.0/0.0, rows {'hits': 0, 'misses': 0, 'caches': 0, 'bytes': 0, 'hit_rate': None}, cgroup 108.725 GiB
+== devtime: {"tokens": 32, "wall_ms_per_token": 30.4624, "wall_ms_per_token_p50": 29.6944, "devices": {"0": {"module_ms_per_token": 11.5589, "blocks": 12, "layer_ms_mean": 0.9625, "layer_ms_p50": 0.8141, "layer_ms_p90": 1.2882}, "1": {"module_ms_per_token": 18.3407, "blocks": 28, "layer_ms_mean": 0.6424, "layer_ms_p50": 0.6063, "layer_ms_p90": 1.0727}}, "residual_ms_per_token": 0.5627, "lead_tokens": 16, "unhooked_wall_ms_per_token": 29.7793, "tier": {"hit_rate": 0.84635, "misses_per_token": 25.812, "h2d_mb_per_token": 342.56, "ssd_reads": 0}, "prompt_tokens": 32768, "modules_hooked": 45}
+-- tier: SSD reads after the load 0 (0 bytes)
+-- cgroup at the end: {'path': '/system.slice/run-rc70a7215d2aa4788bfc64cfcc8d4df61.scope', 'current': 108.731, 'peak': 109.451, 'max': 119.0, 'swap.max': 0.0, 'swap.current': 0.0, 'events_high': 0, 'events_max': 0, 'events_oom': 0, 'events_oom_kill': 0}; nvidia-smi min free MiB {'0': 4475.0, '1': 638.0}
+-- result line appended to /root/rnd/release/recipe/stage2/w2/results.jsonl (status ok, provisional False)

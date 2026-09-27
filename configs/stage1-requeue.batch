@@ -1,0 +1,7 @@
+# appended 2026-09-27T00:22:47+00:00 by the stage-1 run (PLAN.md 5, 1C: a second a / best-c pair when 1A leaves the decision within noise):
+# after C11-2, S2-32K decode is a tie (a 37.2-38.4 per process vs C12 38.3-38.6, C10 38.1-38.9); best c for decode = C12.
+# C2 is NOT appended: its condition (decode rising 12 -> 10 -> 8) fails (S1-32K 35.7 / 34.6 / 34.2; S3 turns 37.4 / 36.9 / 35.8).
+#@ est=9 timeout=1500 minavail=124
+A1M-5 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench2/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=119G CUDA_VISIBLE_DEVICES=0 EXL3_PLACEMENT='*=cuda:0 experts=cache; ram experts=102GiB' | --modes h2h --scenarios full --cache-tokens 1048576 --max-output-size 32 --engram-drop --timeline 32 --expect-native-sha 823174af46fb
+#@ est=12 timeout=1500 minavail=87
+C12-4 | BENCH_PYTHON=/root/rnd/release/all/aux/py_memwatch.sh MEMWATCH_PY=/root/rnd/release/recipe/bench2/py_mem.sh PYTORCH_ALLOC_CONF=backend:cudaMallocAsync PYTORCH_CUDA_ALLOC_CONF=backend:cudaMallocAsync PYTHONDONTWRITEBYTECODE=1 MEMMAX=119G EXL3_PLACEMENT='0-11=cuda:0; 12-39=cuda:1 experts=cache; ram experts=all; disk experts=off' | --modes h2h --scenarios full --chunk 4096 --cache-tokens 1048576 --max-output-size 32 --engram-drop --timeline 32 --expect-native-sha 823174af46fb

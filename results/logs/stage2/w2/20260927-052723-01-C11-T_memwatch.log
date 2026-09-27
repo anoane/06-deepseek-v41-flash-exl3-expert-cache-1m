@@ -1,0 +1,13 @@
+2026-09-27 05:27:23 memwatch[3340784] pid=3340780 start floor=8388608kB interval=2s grace=10s avail=146378588kB target oom_score_adj=1000 cmd=[systemd-run --scope -q -p MemoryMax=119G -p MemorySwapMax=0 /root/rnd/release/venv/bin/python /root/rnd/release/recipe/bench3/dsv41_bench.py --label C11-T --run-id 20260927-052723-01-C11-T --results /]
+2026-09-27 05:28:23 memwatch[3340784] pid=3340780 ok avail=142486468kB min=142486468kB rss=4614368kB psi=[some avg10=0.00 avg60=0.00 avg300=0.01 total=276896438]
+2026-09-27 05:29:23 memwatch[3340784] pid=3340780 ok avail=142372816kB min=142372816kB rss=4615440kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276896438]
+2026-09-27 05:30:23 memwatch[3340784] pid=3340780 ok avail=70431308kB min=70431308kB rss=75326236kB psi=[some avg10=0.03 avg60=0.02 avg300=0.00 total=276920010]
+2026-09-27 05:31:23 memwatch[3340784] pid=3340780 ok avail=70356564kB min=70155988kB rss=75337384kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276920010]
+2026-09-27 05:32:23 memwatch[3340784] pid=3340780 ok avail=70050204kB min=70041988kB rss=75348684kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276920010]
+2026-09-27 05:33:24 memwatch[3340784] pid=3340780 ok avail=69902108kB min=69902108kB rss=75348756kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276920010]
+2026-09-27 05:34:24 memwatch[3340784] pid=3340780 ok avail=69620604kB min=69578800kB rss=75356040kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276920010]
+2026-09-27 05:35:24 memwatch[3340784] pid=3340780 ok avail=69661032kB min=69436632kB rss=75356044kB psi=[some avg10=0.00 avg60=0.00 avg300=0.00 total=276920010]
+2026-09-27 05:36:24 memwatch[3340784] pid=3340780 ok avail=70046772kB min=69436632kB rss=75383096kB psi=[some avg10=0.22 avg60=0.12 avg300=0.03 total=277036151]
+2026-09-27 05:37:24 memwatch[3340784] pid=3340780 ok avail=69934964kB min=69436632kB rss=75509128kB psi=[some avg10=0.00 avg60=0.04 avg300=0.01 total=277036151]
+2026-09-27 05:38:24 memwatch[3340784] pid=3340780 ok avail=70076656kB min=69436632kB rss=75386444kB psi=[some avg10=0.00 avg60=0.01 avg300=0.00 total=277036151]
+2026-09-27 05:38:55 memwatch[3340784] pid=3340780 target exited on its own; min MemAvailable seen 69436632kB
